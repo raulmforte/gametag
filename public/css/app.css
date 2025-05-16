@@ -1,0 +1,885 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/*HEADER CSS*/
+
+/* Header negro*/
+
+.header-negro{
+  height: 30px;
+}
+.top-bar {
+  background-color: #343a40;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 5px 0;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1010;
+  opacity: 1;
+}
+
+/* Header blanco */
+
+.fixed-header {
+  background-color: white;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  z-index: 1020;
+  box-shadow: 0 4px 2px -2px gray;
+  transition: top 0.1s ease-in-out;
+  height: 500px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.fixed-header img {
+  max-width: 100%;
+}
+
+.top-bar a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.top-bar a:hover {
+  color: white;
+}
+
+.fullscreen-bg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.bg-white{
+  height: 85px;
+}
+
+.carousel-item{
+  height: 200px;
+  width: auto;
+}
+
+/*NUMEROS CSS*/
+
+.custom-bg-dark{
+  margin-top: 200px;
+  height: 400px;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-image: url('/fotos/visitantes.webp');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+.numeros{
+  text-align: center;
+  margin-top: 60px;
+  color: #fdfdfd;
+
+}
+.todo-numeros{
+  margin: 50px;
+}
+
+.numeros p {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.negrita{
+  margin-top: 100px;
+  font-size: xx-large;
+}
+
+.d-flex .text-center {
+  margin: 0 100px;
+  padding: 5px;
+  margin-top: 50px;
+
+}
+
+.numero .negrita {
+  font-size: 50px;
+  font-weight: bold;
+
+}
+.negrita:hover{
+  color: rgb(180, 180, 180);
+  transition: 0.3s;
+
+}
+
+/*HISTORIA CSS*/
+
+.contenedor {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background-image: url('/fotos/gente.webp');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 100px;
+}
+
+.contenido {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  text-align: center;
+}
+
+/*EL CARRUSEL DE LA HISTORIA*/
+.carrusel-historia {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  background-color: #fff;
+}
+
+.carrusel-historia .carousel-inner-custom {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+  width: 100%; /* Forzamos a que ocupe el contenedor */
+}
+
+.carrusel-historia .carousel-item-custom {
+  flex: 0 0 25%;
+  box-sizing: border-box;
+  padding: 1rem;
+  text-align: center;
+}
+
+.carrusel-historia .carousel-item-custom img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.carrusel-historia .carousel-item-custom img:hover {
+  transform: scale(1.02);
+}
+
+.carrusel-historia .carousel-item-custom h5 {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: #0d6efd;
+}
+
+.carrusel-historia .carousel-item-custom p {
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
+  color: #333;
+}
+
+/* Botones */
+.carrusel-historia .carousel-prev-custom,
+.carrusel-historia .carousel-next-custom {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.carrusel-historia .carousel-prev-custom:hover,
+.carrusel-historia .carousel-next-custom:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carrusel-historia .carousel-prev-custom {
+  left: 10px;
+}
+
+.carrusel-historia .carousel-next-custom {
+  right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .carrusel-historia .carousel-item-custom {
+    flex: 0 0 50%;
+  }
+
+  .carrusel-historia .carousel-item-custom img {
+    height: 550px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carrusel-historia .carousel-item-custom {
+    flex: 0 0 100%;
+  }
+
+  .carrusel-historia .carousel-item-custom img {
+    height: 550px;
+  }
+}
+
+
+.carrusel-titulo{ 
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/*CATEGORIAS CSS*/
+
+.contenedores {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  height: 650px;
+  width: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+}
+
+.foto1 { background-image: url("/fotos/Simulacion.png"); }
+.foto2 { background-image: url("/fotos/Accion.png"); }
+.foto3 { background-image: url("/fotos/Rol.png"); }
+.foto4 { background-image: url("/fotos/Novela.png"); }
+.foto5 { background-image: url("/fotos/Terror.png"); }
+.foto6 { background-image: url("/fotos/Estrategia.png"); }
+
+.contenedores::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease-in-out;
+}
+
+.contenedores:hover::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.texto-categoria {
+  position: relative;
+  z-index: 2;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-weight: bold;
+  width: 100%;
+}
+
+.contenedores a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.titulo-categorias{
+  margin-bottom: 100px;
+  /*fgfgfgfgsfgfgfgfgfgfdgsfd*/
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  font-size: 50px;
+  line-height: 1.6;
+}
+
+/*MARCAS CSS*/
+
+.marcas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+
+.marca {
+  flex: 1;
+  width: auto;
+  text-align: center;
+  height: 400px;
+
+}
+
+.im2{
+    height: 370px;
+    width: auto;
+}
+
+.marca img {
+  width: 100%;;
+  transition: transform 0.3s ease-in-out;
+
+}
+
+.marca img:hover {
+  transform: scale(1.1);
+}
+
+/*FOOTER CSS*/
+.footer-custom {
+  background-color:rgba(238, 238, 238, 0.6); /* Blanco grisáceo más notorio */
+  border-top: 1px solid #ff6600; /* Línea superior destacada */
+  margin-top: 200px;
+}
+
+.text-orange {
+  color: #ff6600;
+}
+
+.icone-orange i {
+  color: #ff6600;
+  transition: color 0.3s;
+}
+
+.icone-orange i:hover {
+  color: rgb(104, 50, 6); /* un efecto al pasar el mouse */
+}
+/*SOBRE NOSOTROS*/
+
+.sobre-nosotros {
+    background-image: url('/fotos/munegro.png') !important;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 100px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+}
+
+.quienes{
+  margin-top: 160px;
+  margin-bottom: 80px;
+}
+
+/*ESPECIALIZACIONES CSS*/
+/*
+.postit {
+  text-align: center;
+  background-color: gainsboro;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.719);
+  transition: all 0.5s ease;
+}
+
+.postit:hover {
+  color: white;
+  background-color: #212529;
+  transition: all 0.3s ease-in-out;
+}
+
+.postit::before {
+  transition: background 0.5s ease-in-out;
+}
+
+.especializaciones-titfulo {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.container.especialzaciones {
+  max-width: 1200px;
+}
+
+.row {
+  margin-bottom: 30px;
+}*/
+/*HOT NEW CSS*/
+/* Destacado inicial (call-to-action) */
+.cta-noticia {
+  background-color: #e9bf91;       /* Naranja muy claro */
+  border-left: 6px solid #ff6600;  /* Naranja vivo */
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cta-enlace {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cta-contenido h2.cta-titulo {
+  font-size: 1.75rem;
+  color: #ff6600;
+  margin: 0 0 5px;
+}
+
+.cta-contenido p.cta-descripcion {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.cta-enlace:hover .cta-titulo {
+  text-decoration: underline;
+}
+/* Contenedor principal */
+.gt-article {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff8f0;      /* Naranja muy suave */
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+  line-height: 1.6;
+  margin-top: 180px;
+}
+
+/* Header */
+.gt-article-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.gt-article-title {
+  font-size: 2.5rem;
+  color: #ff6600;                /* Naranja vivo */
+  margin: 0;
+}
+
+.gt-article-date {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 8px;
+}
+
+/* Cuerpo */
+.gt-article-body p {
+  margin-bottom: 1.5em;
+}
+
+.gt-article-lead {
+  background-color: #fff3e6;     /* Naranja muy claro */
+  border-left: 4px solid #ff6600;
+  padding: 1em;
+  font-size: 1.1rem;
+  color: #333333;
+}
+
+/* Footer */
+.gt-article-footer {
+  border-top: 1px solid #ffe6cc; /* Naranja pálido */
+  margin-top: 30px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+.gt-article-source-label {
+  margin-right: 5px;
+}
+
+.gt-article-source-link {
+  color: #ff6600;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.gt-article-source-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gt-article {
+    padding: 20px;
+  }
+  .gt-article-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gt-article {
+    padding: 15px;
+  }
+  .gt-article-title {
+    font-size: 1.7rem;
+  }
+}
+
+
+/*NOTICIAS CSS*/
+
+.link-noticias{
+  color: #000;
+}
+
+.contenedor-noticias {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.noticias-noticias {
+  flex: 1;
+  max-width: 48%;
+  text-align: center;
+}
+
+.noticias-noticias img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.noticias-titulo{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+/* Oculta el header global en la página de noticia */
+.noticia-page .cabezera {
+  display: none !important;
+}
+
+/* Ajusta márgenes para que el contenido quede bien pegado arriba */
+.noticia-page {
+  padding-top: 0 !important;
+}
+
+.noticia-page main,
+.noticia-page .gt-article {
+  margin-top: 0 !important;
+}
+
+
+/*CATALOGOS CSS*/
+
+.catalogo-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 0;
+}
+
+.catalogo-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.catalogo-carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  will-change: transform;
+}
+
+.catalogo-carousel-item {
+  flex: 0 0 25%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.catalogo-carousel-item img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.catalogo-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.catalogo-carousel-btn:hover {
+  opacity: 1;
+}
+
+.catalogo-carousel-prev {
+  left: 10px;
+}
+
+.catalogo-carousel-next {
+  right: 10px;
+}
+
+.catalogos-titulo{
+  margin-top: 100px;
+  text-align: center;
+}
+
+/*REVISTAS CSS*/
+
+.link-noticias{
+  color: #000;
+}
+
+.contenedor-noticias {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.noticias-noticias {
+  flex: 1;
+  max-width: 48%;
+  text-align: center;
+}
+
+.noticias-noticias img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.noticias-titulo{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+/*CATALOGOS CSS*/
+
+.revista-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 0;
+}
+
+.revista-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.revista-carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  will-change: transform;
+}
+
+.revista-carousel-item {
+  flex: 0 0 25%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.revista-carousel-item img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.revista-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.revista-carousel-btn:hover {
+  opacity: 1;
+}
+
+.revista-carousel-prev {
+  left: 10px;
+}
+
+.revista-carousel-next {
+  right: 10px;
+}
+
+.revistas-titulo{
+  margin-top: 100px;
+  text-align: center;
+}
+
+/*CONTACTO CSS*/
+
+.contacto-titulo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.custom-border {
+  border: 2px solid orange !important;
+  border-radius: 4px !important;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.custom-border:focus {
+  border-color: #ff6600 !important;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5) !important;
+}
+
+.formulario{
+  width: 1000px;
+}
+
+/*GENERAL CSS*/
+
+.fuente{
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px;
+  line-height: 1.6 !important;
+}
+
+.fuente-titulo{
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 50px;
+  line-height: 1.6 !important;
+}
+
+.fuente-titulo-social{
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  line-height: 1.6;
+}
+
+.linea-azul {
+  border: #ff6600;
+  height: 3px;
+  background-color: orange;
+  margin: 20px auto;
+  width: 30%;
+  opacity: 100;
+}
+
+/*ANOTHER HEADER CSS*/
+
+.another-header-negro{
+  height: 30px;
+}
+
+.another-header-blanco{
+  height: 50px;
+}
+
+/*INNOXPORT CSS*/
+
+.todo-texto-innoxport{
+  margin-top: 120px;
+  text-align: center;
+}
+
+.imagen-innoxport{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*PHOTOVOLTAIC CSS*/
+
+.todo-texto-photovoltaic{
+  text-align: center;
+  margin-top: 120px;
+}
+
+.imagen-photovoltaic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pdfs{
+  margin-top: 200px;
+  position: relative;
+  width: 100%;
+  background-image: url('/fotos/munegro.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
