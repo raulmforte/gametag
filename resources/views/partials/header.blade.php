@@ -8,6 +8,10 @@
         <a href="http://127.0.0.1:8000/">
             <img src="{{ asset('fotos/letras2.png') }}" style="width: auto; height: 80px;" class="img-fluid rounded mt-0 mb-0 top" alt="Logo2">
         </a>
+        <div class="d-flex align-items-center">
+            <a href="{{ route('login') }}" class="text-dark mx-2">Iniciar Sesión</a>
+            <a href="{{ route('register') }}" class="text-dark mx-2">Registrarse</a>
+            <a href="{{ route('juegos.create') }}" class="text-dark mx-2">Crear Juego</a>
         <div class="d-flex align-items-center fuente">
             <a href="#" class="text-dark mx-2">ES</a>
             <a href="#" class="text-dark mx-2">EN</a>

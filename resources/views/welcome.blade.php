@@ -13,6 +13,8 @@
 </head>
 
 <body class="bg-image">
+
+        
     @include('partials.header')
 
     @include('partials.history')
