@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+
+    'recaptcha' => [
+        'v3_sitekey' => env('RECAPTCHA_V3_SITEKEY'),
+        'v3_secret' => env('RECAPTCHA_V3_SECRET'),
+    ],
+
 ];
