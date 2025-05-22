@@ -1,3 +1,4 @@
+{{-- filepath: /home/raul/Escritorio/gametag/gametag/resources/views/layout.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,92 +11,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>@yield('title', 'GAMETAG')</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #343a40;
-            color: white;
-            padding: 10px 0;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        header nav ul li {
-            margin: 0 15px;
-        }
-
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        header nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{{ route('welcome') }}">Inicio</a></li>
-                <li><a href="{{ route('juegos.create') }}">Crear Juego</a></li>
-                <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
-                <li><a href="{{ route('register') }}">Registrarse</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-image">
+    {{-- Header --}}
+    @include('partials.header')
 
-    <main>
-        @yield('content')
-    </main>
+    {{-- History Section --}}
 
-    <footer>
-        <p>&copy; {{ date('Y') }} Gametag. Todos los derechos reservados.</p>
-    </footer>
+
+    {{-- Contact Section --}}
+    @include('partials.contact')
+
+    {{-- Footer --}}
+    @include('partials.footer')
+
+    {{-- Scripts --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3Z1J6X1Z4cb4VnAqmpAhFlM5Yb5Ud1Et4yBLt+Jx1nVybkXM5ZyY8gMIvM9bwKE" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" type="module" defer></script>
 </body>
 
 </html>
