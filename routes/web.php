@@ -61,13 +61,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/juegos', [JuegoController::class, 'store']);
 });*/
 Route::get('/juego/{id}', [JuegoController::class, 'show'])->name('juegos.show');
-
+Route::get('/juegos/categoria/{categoria}', [JuegoController::class, 'mostrarPorCategoria'])->name('juegos.categoria');
 //Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/juegos/crear', [JuegoController::class, 'create'])->name('juegos.create');
     Route::post('/admin/juegos', [JuegoController::class, 'store'])->name('juegos.store');
 //});
 require __DIR__.'/auth.php';
 
-//Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/juegos/crear', [JuegoController::class, 'create'])->name('juegos.create');
-//});

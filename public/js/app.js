@@ -47,7 +47,7 @@ window.onload = function() {
     animateNumber('#almacen', 10000, 1500);
 };
 
-window.addEventListener('scroll', function () {
+/*window.addEventListener('scroll', function () {
   const fixedHeader = document.querySelector('.fixed-header');
 
   // Cuando el usuario haga scroll hacia abajo
@@ -59,7 +59,7 @@ window.addEventListener('scroll', function () {
       fixedHeader.style.top = '30px';  // El header blanco se coloca debajo del negro
 
   }
-});
+});*/
 
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('catalogoCarousel');

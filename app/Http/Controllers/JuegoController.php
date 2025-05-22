@@ -81,4 +81,12 @@ public function create()
 {
     return view('admin.juegos.create');
 }
+public function mostrarPorCategoria($categoria)
+{
+    // Obtener los juegos cuyo género coincida con la categoría
+    $juegos = Juego::where('genero', $categoria)->get();
+
+    // Retornar la vista con los juegos
+    return view('juegos.categoria', compact('juegos', 'categoria'));
+}
 }
