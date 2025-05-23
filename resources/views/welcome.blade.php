@@ -36,18 +36,16 @@
     <section class="cta-noticia">
         <a href="{{ route('hot_new')}}" class="cta-enlace">
             <div class="cta-contenido">
-                <h2 class="cta-titulo">¡No te pierdas la noticia más polémica del momento!</h2>
-                <p class="cta-descripcion">"Doom: The Dark Ages" llega incompleto: ¿el fin del formato físico?</p>
+                <h2 class="cta-titulo">¡No te pierdas la noticia del momento!</h2>
+                <p class="cta-descripcion">Click aqui para mas informacion </p>
             </div>
         </a>
     </section>
 
 
-    <div class="pdfs">
-        @include('partials.catalogs')
 
-        @include('partials.magazines')
-    </div>
+    @include('partials.catalogs')
+
 
     @include('partials.contact')
 

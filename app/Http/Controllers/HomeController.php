@@ -3,136 +3,61 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\Paginator;
+use App\Models\Noticia;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        // Puedes agregar un middleware aquí si lo necesitas
+        // Aquí forzamos la paginación con Bootstrap 5
+        Paginator::useBootstrapFive();
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        $catalogos = new Collection([
-            1 => [
-                'filename' => 'catalogo_tecnico_2025',
-                'name' => 'Catálogo Técnico 2025'
-            ],
-            2 => [
-                'filename' => 'TAPICERIA2023_G01',
-                'name' => 'Tapicería 2024 Grupo 1'
-            ],
-            3 => [
-                'filename' => 'tapiceria_2024',
-                'name' => 'Tapicería 2023'
-            ],
-            4 => [
-                'filename' => 'Folleto_manivelas',
-                'name' => 'Folleto de Manivelas'
-            ],
-            5 => [
-                'filename' => 'ProteccionLaboral_23',
-                'name' => 'Protección Laboral 20.23'
-            ],
-            6 => [
-                'filename' => 'catalogo_mesa',
-                'name' => 'Mesa 20.23'
-            ],
-            7 => [
-                'filename' => 'Tiradores_2022',
-                'name' => 'Tiradores 20.22'
-            ],
-            8 => [
-                'filename' => 'alk_2020_english',
-                'name' => 'ALK | Furniture fittings 2021'
-            ],
-            9 => [
-                'filename' => 'general_2_20',
-                'name' => 'General 20.20'
-            ],
-            10 => [
-                'filename' => 'grupo_1',
-                'name' => 'Cierres 20.20'
-            ],
-            11 => [
-                'filename' => 'grupo_2',
-                'name' => 'Bisagras 20.20'
-            ],
-            12 => [
-                'filename' => 'grupo_3',
-                'name' => 'Unión 20.20'
-            ],
-            13 => [
-                'filename' => 'grupo_4',
-                'name' => 'Tornillería 20.20'
-            ],
-            14 => [
-                'filename' => 'grupo_5',
-                'name' => 'Interior muebles 20.20'
-            ],
-            15 => [
-                'filename' => 'grupo_6',
-                'name' => 'Guías y patas 20.20'
-            ],
-            16 => [
-                'filename' => 'grupo_7',
-                'name' => 'Sistemas correderos 20.20'
-            ],
-            17 => [
-                'filename' => 'grupo_8',
-                'name' => 'Ruedas y patas 20.20'
-            ],
-            18 => [
-                'filename' => 'grupo_9',
-                'name' => 'Iluminación'
-            ],
-            19 => [
-                'filename' => 'grupo_10',
-                'name' => 'Cocinas'
-            ],
-            20 => [
-                'filename' => 'carpinteria_2_18',
-                'name' => 'Carpintería 2.18'
-            ]
-        ]);
+        $noticias = Noticia::orderBy('created_at', 'desc')
+                           ->take(8)
+                           ->get();
 
-        $revistas = array(
-            'SectorV_e5',
-            'SectorV_e4',
-            'SectorV_e3',
-            'SectorV_e2',
-            'SectorV_e1'
-        );
+        $juegos = \App\Models\Juego::orderBy('created_at', 'desc')
+                                   ->take(12)
+                                   ->get();
 
-        return view('welcome', compact('catalogos', 'revistas'));
+        return view('welcome', compact('noticias', 'juegos'));
     }
 
-    public function hot_new(){
-
-        return view('partials.hot_new');
-
+    public function hot_new()
+    {
+        $juego = \App\Models\Juego::orderBy('id', 'desc')->first();
+        return view('partials.hot_new', compact('juego'));
     }
 
-    public function sobre_nosotros(){
-
+    public function sobre_nosotros()
+    {
         return view('partials.about_us');
     }
 
-    public function categorias(Request $request){
-
+    public function categorias(Request $request)
+    {
         $categoria = $request->input('categoria');
-
         return view('categorias', compact('categoria'));
+    }
+
+    public function news2(){
+        $noticias = Noticia::paginate(9);
+
+        $fechaReferencia = Carbon::create(2025, 5, 21, 9, 0, 0);
+
+        return view('news2', compact('noticias', 'fechaReferencia'));
+    }
+
+    public function news2_mostrar($id)
+    {
+        // Cargamos la relación plural 'imagenes' tal y como la iteras en la vista
+        $noticia = Noticia::findOrFail($id);
+
+        return view('news2_mostrar', compact('noticia'));
     }
 }

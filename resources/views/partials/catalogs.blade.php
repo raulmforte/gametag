@@ -1,53 +1,145 @@
+<style>
+.noticias-carrusel-container {
+  position: relative;
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 1rem;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+}
 
-<catalogos class=catalogos>
-    <div class="catalogos-titulo">
-        <h2 class="fuente-titulo">Catalogos</h2>
-        <hr class="linea-azul">
-    </div>
-    <div class="catalogo-carousel-wrapper">
-        <button class="catalogo-carousel-btn catalogo-carousel-prev">←</button>
+.carrusel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
 
-        <div class="catalogo-carousel-viewport">
-            <div class="catalogo-carousel-track" id="catalogoCarousel">
-                @foreach($catalogos as $catalogo)
-                <div class="catalogo-carousel-item">
-                    <a href="{{ asset('catalogos/pdf/' . $catalogo['filename'] . '.pdf') }}" target="_blank">
-                    <img src="{{ asset('catalogos/images/' . $catalogo['filename'] . '.jpg') }}" alt="{{ $catalogo['name'] }}">
-                    </a>
-                    <h5>{{ $catalogo['name'] }}</h5>
-                </div>
-                @endforeach
-            </div>
+.carrusel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  gap: 1rem;
+}
+
+.carrusel-item {
+  flex: 0 0 25%; /* 4 items visibles */
+  box-sizing: border-box;
+  background: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.carrusel-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ff6600;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  user-select: none;
+  z-index: 10;
+}
+
+.carrusel-prev {
+  left: 10px;
+}
+
+.carrusel-next {
+  right: 10px;
+}
+
+.carrusel-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+</style>
+
+<div class="noticias-carrusel-container">
+  <button class="carrusel-btn carrusel-prev">‹</button>
+
+  <div class="carrusel-viewport">
+    <div class="carrusel-track">
+      @foreach($noticias as $noticia)
+        <div class="carrusel-item">
+          <img src="{{ asset('noticias/images/' . $noticia->imagen) }}" alt="{{ $noticia->titular }}" />
+          <h5>{{ $noticia->titular }}</h5>
+          <p>{{ Str::limit($noticia->descripcion, 100) }}</p>
         </div>
-
-        <button class="catalogo-carousel-btn catalogo-carousel-next">→</button>
+      @endforeach
     </div>
-</catalogos>
+  </div>
+
+  <button class="carrusel-btn carrusel-next">›</button>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+  <a href="" class="btn btn-warning px-4" style="background-color: #ff6600; border:none; color: white; font-weight: 600;">
+    Más noticias
+  </a>
+</div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('catalogoCarousel');
-    const items = document.querySelectorAll('.catalogo-carousel-item');
-    const nextBtn = document.querySelector('.catalogo-carousel-next');
-    const prevBtn = document.querySelector('.catalogo-carousel-prev');
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carrusel-track");
+  const items = document.querySelectorAll(".carrusel-item");
+  const prevBtn = document.querySelector(".carrusel-prev");
+  const nextBtn = document.querySelector(".carrusel-next");
 
-    let currentPosition = 0;
-    const itemWidth = items[0].offsetWidth;
-    const visibleItems = 4;
-    const totalItems = items.length;
+  const itemsVisible = 4;
+  const totalItems = items.length;
+  let currentIndex = 0;
 
-    nextBtn.addEventListener('click', () => {
-        if (currentPosition < totalItems - visibleItems) {
-            currentPosition++;
-            track.style.transform = `translateX(-${itemWidth * currentPosition}px)`;
-        }
-    });
+  // Calculamos el ancho total que ocupa cada item incluyendo gap
+  const style = getComputedStyle(track);
+  const gap = parseInt(style.gap) || 0;
 
-    prevBtn.addEventListener('click', () => {
-        if (currentPosition > 0) {
-            currentPosition--;
-            track.style.transform = `translateX(-${itemWidth * currentPosition}px)`;
-        }
-    });
+  const itemWidth = items[0].offsetWidth + gap;
+
+  // Max desplazamiento (índice máximo para que no quede nada cortado)
+  const maxIndex = Math.ceil(totalItems / itemsVisible) - 1;
+
+  const updateButtons = () => {
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === maxIndex;
+  };
+
+  const updateCarousel = () => {
+    const moveX = currentIndex * itemsVisible * itemWidth;
+    track.style.transform = `translateX(-${moveX}px)`;
+    updateButtons();
+  };
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    currentIndex = 0;
+    updateCarousel();
+  });
+
+  // Inicializa
+  updateCarousel();
 });
 </script>

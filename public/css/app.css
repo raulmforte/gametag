@@ -4,11 +4,17 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
 @theme {
+  --font-sans: 'Jost', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/*@theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-}
+}*/
 
 /*HEADER CSS*/
 
@@ -857,19 +863,72 @@ body {
 
 
 
+/*NOTICIAS2 CSS*/
 
+.notilinks{
+  color: #000;
 
+}
 
+.imagen-noticia-innoxport{
+  max-height: 500px !important;
+  width: auto;
 
+}
 
+.card.h-100 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+.card-body {
+  flex: 1;
+}
 
+.pagination {
+    background-color: #f8f9fa; /* Cambia este color por el que prefieras */
+    padding: 10px;
+    border-radius: 8px;
+}
 
+/* Cambia el color de los botones activos */
+.page-item.active .page-link {
+    background-color: #db6707; /* Color de fondo del botón activo */
+    border-color: #db6707;
+    color: #fff;
+}
 
+/* Cambia el color de los enlaces */
+.page-link {
+    color: #db6707;
+}
 
+.page-link.disabled {
+    color: #db6707; /* Gris para enlaces deshabilitados */
+}
 
+.page-item:not(.active) .page-link {
+    color: #db6707; /* Azul oscuro */
+}
+.page-link:hover {
+    background-color: #db6707; /* Cambia el color al pasar el mouse */
+    color: #fff;
+}
+.page-item:not(.active) .page-link:hover {
+    background-color: #db6707; /* Cambia el color al pasar el mouse */
+    color: #fff;
+}
+.page-item:not(.active) .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(70, 100, 124, 0.5); /* Cambia el color del borde al hacer foco */
+}
 
-
-
+.todas-noticias {
+  padding-top: 150px; /* Ajusta los píxeles al alto de tu header */
+}
 
 .pdfs{
   margin-top: 200px;
