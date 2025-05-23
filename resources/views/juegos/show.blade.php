@@ -1,6 +1,11 @@
+@extends('layout')
+
+@section('title', $juego->nombre)
+
+@section('content')
 <h1>{{ $juego->nombre }}</h1>
 <p><strong>Género:</strong> {{ $juego->genero }}</p>
-<img src="{{ asset('storage/imagenes/' . $juego->imagen) }}" alt="Imagen del juego">
+<img src="{{ asset('storage/' . $juego->imagen) }}" alt="Imagen del juego" style="width: 600px; height: auto;">
 <p>{{ $juego->descripcion }}</p>
 
 <iframe width="560" height="315" 
@@ -27,3 +32,4 @@
         @endforeach
     </tbody>
 </table>
+@endsection

@@ -67,4 +67,3 @@ Route::get('/juegos/categoria/{categoria}', [JuegoController::class, 'mostrarPor
     Route::post('/admin/juegos', [JuegoController::class, 'store'])->name('juegos.store');
 //});
 require __DIR__.'/auth.php';
-

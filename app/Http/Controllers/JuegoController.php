@@ -7,51 +7,6 @@ use App\Models\Juego;
 use App\Models\Precio; 
 
 class JuegoController extends Controller{
-    /*public function store(Request $request)
-    {
-        dd($request->all());
-        try {
-            $validatedData = $request->validate([
-                'nombre' => 'required|string|max:255',
-                'genero' => 'required|string|max:255',
-                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-                'trailer' => 'nullable|url',
-                'descripcion' => 'nullable|string',
-                'plataformas.*' => 'required|string|max:255',
-                'precios.*' => 'required|numeric|min:0',
-                'urls.*' => 'nullable|url',
-            ]);
-    
-            // Crear el juego
-            $juego = Juego::create([
-                'nombre' => $validatedData['nombre'],
-                'genero' => $validatedData['genero'],
-                'descripcion' => $validatedData['descripcion'] ?? null,
-                'trailer' => $validatedData['trailer'] ?? null,
-            ]);
-    
-            // Subir la imagen si existe
-            if ($request->hasFile('imagen')) {
-                $path = $request->file('imagen')->store('imagenes', 'public');
-                $juego->imagen = $path;
-                $juego->save();
-            }
-    
-            // Crear los precios asociados
-            foreach ($validatedData['plataformas'] as $index => $plataforma) {
-                Precio::create([
-                    'juego_id' => $juego->id,
-                    'plataforma' => $plataforma,
-                    'precio' => $validatedData['precios'][$index],
-                    'url_compra' => $validatedData['urls'][$index] ?? null,
-                ]);
-            }
-    
-            return redirect()->route('welcome')->with('success', 'Juego creado correctamente!');
-        } catch (\Exception $e) {
-            return redirect()->route('welcome')->with('error', 'Error al crear el juego: ' . $e->getMessage());
-        }
-    }*/
     public function store(Request $request)
     {
         try {
