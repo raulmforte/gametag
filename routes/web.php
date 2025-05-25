@@ -23,8 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
-//Auth::routes();
-
+Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
@@ -67,3 +66,6 @@ Route::get('/juegos/categoria/{categoria}', [JuegoController::class, 'mostrarPor
     Route::post('/admin/juegos', [JuegoController::class, 'store'])->name('juegos.store');
 //});
 require __DIR__.'/auth.php';
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

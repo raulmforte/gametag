@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * inicia las migraciones para crear la tabla 'juegos'.
      */
     public function up(): void
     {
@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('genero');
-            $table->text('descripcion'); // Asegúrate de que esta línea exista
+            $table->text('descripcion'); 
             $table->string('trailer')->nullable();
             $table->string('imagen')->nullable();
             $table->timestamps();
@@ -23,7 +23,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * retrocede las migraciones eliminando la tabla 'juegos'.
      */
     public function down(): void
     {

@@ -69,7 +69,7 @@ class JuegoController extends Controller {
         }
     }
 
-    public function show($id)
+   public function show($id)
     {
         // Obtener un juego por su ID junto con sus precios relacionados
         $juego = Juego::with('precios')->findOrFail($id);
@@ -84,6 +84,7 @@ class JuegoController extends Controller {
 
     public function mostrarPorCategoria($categoria)
     {
+        $categoria = str_replace('_', ' ', $categoria);
         // Obtener los juegos cuyo género coincida con la categoría
         $juegos = Juego::where('genero', $categoria)->get();
 

@@ -24,7 +24,7 @@
                 {{ $juego->descripcion }}
             </p>
         </div>
-    </div>
+    </div> 
 
     <!-- Sección del trailer - mt-4: margen superior reducido -->
     <div class="mt-4">
