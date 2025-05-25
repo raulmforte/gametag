@@ -1,4 +1,20 @@
 <categories>
+    <style>
+        /* Bordes redondeados, borde gris oscuro, sombra más pronunciada y efecto hover para las imágenes de las categorías */
+        .contenedores {
+            border-radius: 10px; /* Bordes redondeados moderados */
+            border: 2px solid #2c2c2c; /* Borde gris oscuro */
+            overflow: hidden; /* Asegura que el contenido no se salga del borde */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+        }
+
+        .contenedores:hover {
+            transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6); /* Sombra mucho más pronunciada en hover */
+        }
+    </style>
+
     <div class="titulo-categorias">
         <h2 class="text-center fuente-titulo">Categorías</h2>
         <hr class="linea-azul">
