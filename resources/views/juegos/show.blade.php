@@ -27,6 +27,7 @@
     </div> 
 
     <!-- Sección del trailer - mt-4: margen superior reducido -->
+    @if($juego->trailer)
     <div class="mt-4">
         <h2 class="mb-3">Trailer</h2>
         <div class="ratio ratio-16x9"> <!-- Clase responsive de Bootstrap -->
@@ -35,10 +36,12 @@
             </iframe>
         </div>
     </div>
+    @endif
 
     <!-- Tabla de precios - mt-4: margen superior reducido -->
     <div class="mt-4">
         <h3 class="mb-3">Precios</h3>
+        @if($juego->precios->isNotEmpty())
         <div class="table-responsive"> <!-- Hace la tabla responsive -->
             <table class="table table-hover"> <!-- table-hover para efecto hover -->
                 <thead class="table-light">
@@ -65,6 +68,9 @@
                 </tbody>
             </table>
         </div>
+        @else
+        <p class="text-muted">No hay precios disponibles para este juego.</p>
+        @endif
     </div>
 </div>
 @endsection

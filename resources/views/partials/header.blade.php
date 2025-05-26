@@ -42,11 +42,10 @@
             <a href="{{ route('juegos.create') }}" class="text-dark mx-2">Crear Juego</a>
 
             <!-- Idiomas -->
-            <div class="d-flex align-items-center fuente">
-                <a href="#" class="text-dark mx-2">ES</a>
-                <a href="#" class="text-dark mx-2">EN</a>
-                <a href="#" class="text-dark mx-2">FR</a>
+            <div class="d-flex gap-2">
+            <a href="{{ route('welcome', ['lang' => 'es']) }}">ES</a>
+            <a href="{{ route('welcome', ['lang' => 'en']) }}">EN</a>
+            <a href="{{ route('welcome', ['lang' => 'fr']) }}">FR</a>
             </div>
-        </div>
     </div>
 </header>

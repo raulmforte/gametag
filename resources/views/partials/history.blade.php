@@ -1,10 +1,10 @@
-<div class="contenedor">
+<div class="contenedor" style="background-image: url('{{ asset('fotos/Rectangle-70.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; padding-top: 30px; padding-bottom: 10px; margin-bottom: 10px;">
     <div class="contenido fuente-titulo">
-        <h1>Los 12 juegos más recientes</h1>
     </div>
 </div>
 
 <div class="carrusel-historia">
+    <h1 class="text-center">Los juegos más recientes</h1>
     <div class="carousel-inner-custom">
         @foreach ($juegos as $juego)
             <div class="carousel-item-custom text-center">
