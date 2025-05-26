@@ -20,4 +20,13 @@ class Juego extends Model
     {
         return $this->hasMany(Precio::class);
     }
+
+    public function usuario(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function updated_by(){
+        return $this->belongsTO(User::class, 'updated_by');
+
+    }
 }

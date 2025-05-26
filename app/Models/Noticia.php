@@ -15,4 +15,13 @@ class Noticia extends Model
         'descripcion',
         'imagen',
     ];
+
+    public function usuario(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function updated_by(){
+        return $this->belongsTO(User::class, 'updated_by');
+
+    }
 }
