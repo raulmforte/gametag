@@ -29,6 +29,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/sobre_nosotros', [HomeController::class, 'sobre_nosotros'])->name('sobre_nosotros');
 Route::get('/hot_new', [HomeController::class, 'hot_new'])->name('hot_new');
+Route::get('/noticias', [HomeController::class, 'news2'])->name('news2');
+Route::get('/noticias/{id}', [HomeController::class, 'news2_mostrar'])->name('news2_mostrar');
+
+
 
 Route::post('/categorias', [HomeController::class, 'categorias'])->name('categorias');
 

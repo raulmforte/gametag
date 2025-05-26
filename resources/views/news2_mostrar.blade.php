@@ -17,7 +17,7 @@
 
 <body>
     <div class="container mt-5">
-        <a href="{{ route('news2') }}" class="btn btn-secondary mb-3">← @lang('extras.volver')</a>
+        <a href="{{ route('news2') }}" class="btn btn-secondary mb-3">← Volver a noticias</a>
         <a href="{{ route('welcome') }}" class="btn btn-secondary mb-3">← Volver a la pagina principal</a>
         <!-- Volver a noticias -->
 
