@@ -16,17 +16,13 @@ class HomeController extends Controller
     }
 
     public function index()
-    {
-        $noticias = Noticia::orderBy('created_at', 'desc')
-                           ->take(8)
-                           ->get();
+{
+    $noticias = Noticia::orderBy('created_at', 'desc')->take(8)->get();
 
-        $juegos = \App\Models\Juego::orderBy('created_at', 'desc')
-                                   ->take(12)
-                                   ->get();
+    $juegos = \App\Models\Juego::orderBy('created_at', 'desc')->take(12)->get();
 
-        return view('welcome', compact('noticias', 'juegos'));
-    }
+    return view('welcome', compact('noticias', 'juegos'));
+}
 
     public function hot_new()
     {

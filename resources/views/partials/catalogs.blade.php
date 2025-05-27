@@ -72,9 +72,9 @@
     <div class="carrusel-track">
       @foreach($noticias as $noticia)
         <div class="carrusel-item">
-          <img src="{{ asset('noticias/images/' . $noticia->imagen) }}" alt="{{ $noticia->titular }}" />
+          <img src="{{ asset('fotos/' . $noticia->imagen) }}" alt="{{ $noticia->titular }}" />
           <h5>{{ $noticia->titular }}</h5>
-          <p>{{ Str::limit($noticia->descripcion, 100) }}</p>
+          <p>{!! Str::limit($noticia->descripcion, 100) !!}</p>
         </div>
       @endforeach
     </div>

@@ -30,7 +30,7 @@
                     <a href="{{ route('news2_mostrar', ['id' => $noticia->id]) }}"
                         class="text-decoration-none notilinks">
                         @if($noticia->imagen)
-                        <img src="{{ asset('fotos/noticias/' . $noticia->imagen) }}" class="card-img-top"
+                        <img src="{{ asset('fotos/' . $noticia->imagen) }}" class="card-img-top"
                             alt="{{ $noticia->titular }}">
                         @endif
 

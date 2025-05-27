@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Auth;
     </div>
     <div class="offcanvas-body">
         <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link text-white" href="">Noticias</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{{ route('news3') }}">Noticias</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{{ route('juegos') }}">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{{ route('register') }}">Registrar nuevo usuario</a></li>
+
 
             <li class="nav-item mt-3">
                 <form method="POST" action="{{ route('logout') }}">
@@ -36,6 +38,8 @@ use Illuminate\Support\Facades\Auth;
     <ul class="nav flex-column">
         <li class="nav-item"><a class="nav-link text-white" href="{{ route('news3') }}">Noticias</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="{{ route('juegos') }}">Juegos</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{{ route('register') }}">Registrar nuevo usuario</a></li>
+
         <li class="nav-item mt-3">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

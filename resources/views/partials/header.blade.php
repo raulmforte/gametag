@@ -25,21 +25,7 @@
 
         <!-- Navegación -->
         <div class="d-flex align-items-center">
-            @auth
-                <!-- Si el usuario está autenticado, muestra su nombre y un botón para cerrar sesión -->
-                <span class="text-dark mx-2">Hola, {{ Auth::user()->name }}</span>
-                <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-link text-dark mx-2" style="text-decoration: none;">Cerrar sesión</button>
-                </form>
-            @else
-                <!-- Si no está autenticado, muestra los enlaces de login y registro -->
-                <a href="{{ route('login') }}" class="text-dark mx-2">Iniciar Sesión</a>
-                <a href="{{ route('register') }}" class="text-dark mx-2">Registrarse</a>
-            @endauth
-
-            <!-- Enlace para crear un juego (opcional, visible para todos) -->
-            <a href="{{ route('juegos.create') }}" class="text-dark mx-2">Crear Juego</a>
+            
 
             <!-- Idiomas -->
             <div class="d-flex gap-2">

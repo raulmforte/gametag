@@ -24,7 +24,7 @@
 
         <section class="gt-article-body">
             <p class="gt-article-lead">
-                <strong>{{ $juego->descripcion }}</strong>
+                <strong>{{ strip_tags($juego->descripcion. '<p><i><ul><strong>') }}</strong>
             </p>
 
             @if($juego->trailer)
