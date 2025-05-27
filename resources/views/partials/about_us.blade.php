@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quiénes Somos? – GAMETAG</title>
-
+    <title>{{ __('About us') }} – GAMETAG</title>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -85,27 +84,25 @@
     @include('partials.header')
 
     <div class="container quienes text-center">
-        <h1>¿Quiénes somos?</h1>
-        <p>Somos <strong>Arturo y Raúl</strong>, dos estudiantes de Desarrollo de Aplicaciones Web que comparten una
-            pasión desbordante por los videojuegos. Esta página es fruto de nuestro proyecto final y de un sueño de infancia.</p>
+        <h1>{{ __('About us') }}</h1>
+        <p>{{ __('We are Arturo and Raúl') }}, {{ __('two students passionate about video games') }}. {{ __('This page is our final project') }}.</p>
 
-        <h1>¿Por qué lo hacemos?</h1>
-        <p>Creemos firmemente que los videojuegos son una forma de arte, comunidad y diversión. Queremos que cualquier
-            persona pueda disfrutar de este mundo, informarse y descubrir títulos que le apasionen tanto como a nosotros.</p>
+        <h1>{{ __('Why we do it') }}</h1>
+        <p>{{ __('We believe video games are art') }}. {{ __('We want anyone to enjoy this world') }}.</p>
     </div>
 
     <div class="container equipo text-center">
-        <h2>Nuestro equipo</h2>
+        <h2>{{ __('Our team') }}</h2>
         <div class="row justify-content-center">
             <div class="col-md-5 col-lg-4 miembro">
                 <img src="{{ asset('fotos/arturo.jpg') }}" alt="Arturo">
                 <h5>Arturo</h5>
-                <p>Frontend y maquetación. Apasionado de la saga Zelda, la experiencia de usuario y los detalles visuales.</p>
+                <p>{{ __('Frontend and layout specialist') }}. {{ __('Passionate about Zelda series') }}.</p>
             </div>
             <div class="col-md-5 col-lg-4 miembro">
                 <img src="{{ asset('fotos/raul.jpg') }}" alt="Raúl">
                 <h5>Raúl</h5>
-                <p>Backend y lógica de servidor. Fan de los shooters y del código limpio y bien organizado.</p>
+                <p>{{ __('Backend and server logic') }}. {{ __('Fan of shooters and clean code') }}.</p>
             </div>
         </div>
     </div>

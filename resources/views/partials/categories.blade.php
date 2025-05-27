@@ -15,8 +15,8 @@
         }
     </style>
 
-    <div class="titulo-categorias">
-        <h2 class="text-center fuente-titulo">Categorías</h2>
+    <div id= titulo-categorias class="titulo-categorias">
+    <h2 class="text-center fuente-titulo">{{ __('Categories') }}</h2>
         <hr class="linea-azul">
     </div>
     <div class="container">

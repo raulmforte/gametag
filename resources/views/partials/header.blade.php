@@ -26,12 +26,16 @@
         <!-- Navegación -->
         <div class="d-flex align-items-center">
             
-
+        <div class="language-selector">
+        <a href="{{ route('welcome', 'es') }}">ES</a> | 
+        <a href="{{ route('welcome', 'en') }}">EN</a> | 
+        <a href="{{ route('welcome', ['lang' => 'fr']) }}">FR</a>
+        </div>
             <!-- Idiomas -->
-            <div class="d-flex gap-2">
+        <!--    <div class="d-flex gap-2">
             <a href="{{ route('welcome', ['lang' => 'es']) }}">ES</a>
             <a href="{{ route('welcome', ['lang' => 'en']) }}">EN</a>
             <a href="{{ route('welcome', ['lang' => 'fr']) }}">FR</a>
-            </div>
+            </div>-->
     </div>
 </header>

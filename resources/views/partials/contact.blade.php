@@ -3,25 +3,24 @@
         <form method="POST" class="formulario" action="{{ route('contacto.enviar') }}">
             @csrf
             <div class="contacto-titulo">
-                <h2 class="fuente-titulo">Contacto</h2>
-                <hr class="linea-azul">
+                <h2 class="fuente-titulo">{{ __('Contact') }}</h2>                <hr class="linea-azul">
             </div>
             <div class="mb-3 contacto">
-                <label for="nombre" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label">{{ __('Name') }}</label>
                 <input type="text" class="form-control custom-border" id="nombre" name="nombre"
                     value="{{ old('nombre') }}" required>
                 @error('nombre') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
 
             <div class="mb-3 contacto">
-                <label for="email" class="form-label">Correo</label>
+            <label for="email" class="form-label">{{ __('Email') }}</label>
                 <input type="email" class="form-control custom-border" id="email" name="email"
                     value="{{ old('email') }}" required>
                 @error('email') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
 
             <div class="mb-3 contacto">
-                <label for="mensaje" class="form-label">Mensaje</label>
+            <label for="mensaje" class="form-label">{{ __('Message') }}</label>
                 <textarea class="form-control custom-border" id="mensaje" name="mensaje" rows="4"
                     required>{{ old('mensaje') }}</textarea>
                 @error('mensaje') <small class="text-danger">{{ $message }}</small> @enderror
@@ -39,7 +38,7 @@
       });
   });
 </script>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+        <button type="submit" class="btn btn-primary">{{ __('Send') }}</button>
+</form>
     </div>
 </contacto>

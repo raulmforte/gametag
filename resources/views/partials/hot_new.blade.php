@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $juego->nombre }} – Juego</title>
+    <title>{{ $juego->nombre }} – {{ __('Game') }}</title>
 
     <!-- Estilos -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
     <article class="gt-article">
         <header class="gt-article-header">
             <h1 class="gt-article-title">{{ $juego->nombre }}</h1>
-            <p class="gt-article-date">Género: {{ $juego->genero }}</p>
+            <p class="gt-article-date">{{ __('Genre') }}: {{ $juego->genero }}</p>
         </header>
 
         <section class="gt-article-body">
@@ -29,7 +29,7 @@
 
             @if($juego->trailer)
                 <div class="ratio ratio-16x9 mb-3">
-                    <iframe src="{{ $juego->trailer }}" title="Trailer de {{ $juego->nombre }}" allowfullscreen></iframe>
+                    <iframe src="{{ $juego->trailer }}" title="{{ __('Trailer of') }} {{ $juego->nombre }}" allowfullscreen></iframe>
                 </div>
             @endif
 

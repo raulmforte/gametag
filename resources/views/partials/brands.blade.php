@@ -14,8 +14,8 @@
         }
     </style>
 
-    <div class="marcas-todo">
-        <h2 class="fuente-titulo text-center">Tiendas recomendadas</h2>
+<div class="marcas-todo">
+        <h2 class="fuente-titulo text-center">{{ __('Recommended stores') }}</h2>
         <hr class="linea-azul">
         <div class="container marcas">
             <div class="marca">

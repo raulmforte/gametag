@@ -78,3 +78,9 @@ Route::get('/test-mail', function() {
 // Rutas de juegos públicas
 Route::get('/juego/{id}', [JuegoController::class, 'show'])->name('juegos.show');
 Route::get('/juegos/categoria/{categoria}', [JuegoController::class, 'mostrarPorCategoria'])->name('juegos.categoria');
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});

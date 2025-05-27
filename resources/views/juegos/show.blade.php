@@ -6,31 +6,28 @@
 <div class="container mt-4">
     <h1 class="mb-4">{{ $juego->nombre }}</h1>
 
-    <div class="row align-items-start"> <!-- align-items-start para alinear al tope -->
-        <!-- Columna de la imagen -->
-        <div class="col-md-6 pe-4"> <!-- pe-4: padding derecho -->
+    <div class="row align-items-start">
+        <div class="col-md-6 pe-4">
             <img src="{{ asset('storage/' . $juego->imagen) }}" 
-                 alt="Imagen de {{ $juego->nombre }}" 
-                 class="img-fluid rounded shadow-sm"> <!-- Estilos adicionales -->
+                 alt="{{ __('Image of') }} {{ $juego->nombre }}" 
+                 class="img-fluid rounded shadow-sm">
         </div>
         
-        <!-- Columna de texto - Añadí mb-3 para reducir margen inferior -->
-        <div class="col-md-6 ps-3"> <!-- ps-3: padding izquierdo -->
-            <div class="mb-2"> <!-- Contenedor para género -->
+        <div class="col-md-6 ps-3">
+            <div class="mb-2">
                 <span class="badge bg-primary fs-6">{{ $juego->genero }}</span>
             </div>
             
-            <p class="text-justify lead" style="line-height: 1.6;"> <!-- lead para tamaño de texto -->
+            <p class="text-justify lead" style="line-height: 1.6;">
                 {{ $juego->descripcion }}
             </p>
         </div>
     </div> 
 
-    <!-- Sección del trailer - mt-4: margen superior reducido -->
     @if($juego->trailer)
     <div class="mt-4">
-        <h2 class="mb-3">Trailer</h2>
-        <div class="ratio ratio-16x9"> <!-- Clase responsive de Bootstrap -->
+        <h2 class="mb-3">{{ __('Trailer') }}</h2>
+        <div class="ratio ratio-16x9">
             <iframe src="https://www.youtube.com/embed/{{ \Illuminate\Support\Str::after($juego->trailer, 'v=') }}" 
                     allowfullscreen>
             </iframe>
@@ -38,17 +35,16 @@
     </div>
     @endif
 
-    <!-- Tabla de precios - mt-4: margen superior reducido -->
     <div class="mt-4">
-        <h3 class="mb-3">Precios</h3>
+        <h3 class="mb-3">{{ __('Prices') }}</h3>
         @if($juego->precios->isNotEmpty())
-        <div class="table-responsive"> <!-- Hace la tabla responsive -->
-            <table class="table table-hover"> <!-- table-hover para efecto hover -->
+        <div class="table-responsive">
+            <table class="table table-hover">
                 <thead class="table-light">
                     <tr>
-                        <th>Plataforma</th>
-                        <th>Precio</th>
-                        <th>Enlace</th>
+                        <th>{{ __('Platform') }}</th>
+                        <th>{{ __('Price') }}</th>
+                        <th>{{ __('Link') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +56,7 @@
                             <a href="{{ $precio->url_compra }}" 
                                target="_blank" 
                                class="btn btn-sm btn-outline-success">
-                                Comprar
+                                {{ __('Buy') }}
                             </a>
                         </td>
                     </tr>
@@ -69,7 +65,7 @@
             </table>
         </div>
         @else
-        <p class="text-muted">No hay precios disponibles para este juego.</p>
+        <p class="text-muted">{{ __('No prices available for this game') }}</p>
         @endif
     </div>
 </div>

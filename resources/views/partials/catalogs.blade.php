@@ -85,7 +85,7 @@
 
 <div class="d-flex justify-content-center mt-4">
   <a href="{{ route('news2') }}" class="btn btn-warning px-4" style="background-color: #ff6600; border:none; color: white; font-weight: 600;">
-    Más noticias
+    {{ __('More news') }}
   </a>
 </div>
 

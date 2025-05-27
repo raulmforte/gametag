@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
@@ -78,19 +78,19 @@
     <main>
         @yield('content')
     </main>
-
-    <footer>
+    @include('partials.footer')
+    <!--<footer>
         <footer class="footer-custom pt-5 pb-4">
             <div class="container text-md-left">
                 <div class="row text-md-left">
 
-                    <!-- Marca y descripción -->
+                  
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                         <h5 class="text-uppercase mb-4 fw-bold text-orange">GAMETAG</h5>
                         <p>Tu portal definitivo para noticias, reseñas y comunidad gamer. ¡Explora, juega y conecta!</p>
                     </div>
 
-                    <!-- Navegación -->
+                    
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 fw-bold text-orange">Enlaces</h6>
                         <p><a href="/noticias" class="text-dark text-decoration-none">Noticias</a></p>
@@ -99,14 +99,14 @@
                         <p><a href="/contacto" class="text-dark text-decoration-none">Contacto</a></p>
                     </div>
 
-                    <!-- Contacto -->
+                   
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 fw-bold text-orange">Contacto</h6>
                         <p><i class="fas fa-envelope me-2 text-orange"></i> (un email random raul)</p>
                         <p><i class="fas fa-phone me-2 text-orange"></i> +34 123 456 789</p>
                     </div>
 
-                    <!-- Últimos lanzamientos -->
+                  
                     <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 fw-bold text-orange">Últimos lanzamientos</h6>
                         <ul class="list-unstyled">
@@ -136,7 +136,7 @@
                 </div>
             </div>
         </footer>
-    </footer>
+    </footer>-->
 </body>
 
 </html>
