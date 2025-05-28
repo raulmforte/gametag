@@ -23,7 +23,7 @@
 
         <div class="row align-items-start">
             <div class="col-md-6 pe-4">
-                <img src="{{ asset('storage/' . $juego->imagen) }}" 
+                <img src="{{ asset('fotos/' . $juego->imagen) }}" 
                      alt="{{ __('Image of') }} {{ $juego->nombre }}" 
                      class="img-fluid rounded shadow-sm" />
             </div>

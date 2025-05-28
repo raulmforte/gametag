@@ -29,7 +29,7 @@
                 <div class="col-12 col-sm-6 col-md-3 mb-4">
                     <a href="{{ route('juegos.show', $juego->id) }}" class="text-decoration-none">
                         <div class="card">
-                            <img src="{{ asset('storage/' . $juego->imagen) }}" class="card-img-top" alt="{{ $juego->nombre }}" />
+                            <img src="{{ asset('fotos/' . $juego->imagen) }}" class="card-img-top" alt="{{ $juego->nombre }}" />
                             <div class="card-body">
                                 <h5 class="card-title text-center text-dark">{{ $juego->nombre }}</h5>
                             </div>
