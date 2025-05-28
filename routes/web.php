@@ -7,6 +7,7 @@ use App\Http\Controllers\JuegoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,6 +55,10 @@ Route::middleware('auth')->group(function () {
     // Registro de usuarios — solo accesible si estás logueado
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
+
+    // Usuarios
+    Route::get('admin/users', [UserController::class, 'index'])->name('users');
+    Route::delete('admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });
 
 // Rutas públicas

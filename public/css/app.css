@@ -394,7 +394,7 @@ body {
 /*SOBRE NOSOTROS*/
 
 .sobre-nosotros {
-    background-image: url('/fotos/munegro.png') !important;
+    background-image: url('/fotos/sobrenosotros.webp') !important;
     background-size: cover;
     background-position: center;
     margin-bottom: 100px;
