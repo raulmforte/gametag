@@ -109,6 +109,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ReviewController;
+
 
 // Rutas de autenticación sin registro público
 Auth::routes(['register' => false]);
@@ -177,7 +179,23 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('users');
         Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
+
+    // Reviews
+    Route::get('/admin/reviews', [ReviewController::class, 'index'])->name('admin.reviews.index');
+    Route::patch('/admin/reviews/{review}/toggle', [ReviewController::class, 'toggleAceptada'])->name('admin.reviews.toggle');
+    Route::delete('/admin/reviews/{review}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
+
+
 });
+
+
+
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+
+
+
+
 Route::get('language/{locale}', function ($locale) {
     if (array_key_exists($locale, config('locales.supported'))) {
         session()->put('locale', $locale);

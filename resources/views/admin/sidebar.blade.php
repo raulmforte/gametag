@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
             <li class="nav-item"><a class="nav-link text-white" href="{{ route('news3') }}">Noticias</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="{{ route('juegos') }}">Juegos</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="{{ route('register') }}">Registrar nuevo usuario</a></li>
-
+            <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin.reviews.index') }}">Reviews</a></li>
 
             <li class="nav-item mt-3">
                 <form method="POST" action="{{ route('logout') }}">
@@ -46,6 +46,7 @@ use Illuminate\Support\Facades\Auth;
         <li class="nav-item"><a class="nav-link text-white" href="{{ route('news3') }}">Noticias</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="{{ route('juegos') }}">Juegos</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="{{ route('users') }}">Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin.reviews.index') }}">Reviews</a></li>
 
         <li class="nav-item mt-3">
             <form method="POST" action="{{ route('logout') }}">
@@ -60,4 +61,4 @@ use Illuminate\Support\Facades\Auth;
             </form>
         </li>
     </ul>
-</nav>                                      
+</nav>                                      admin.reviews.index

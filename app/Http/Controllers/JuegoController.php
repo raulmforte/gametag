@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Juego;
 use App\Models\Precio;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
@@ -75,10 +76,16 @@ class JuegoController extends Controller {
     // }
    public function show($id)
     {
-        // Obtener un juego por su ID junto con sus precios relacionados
-        $juego = Juego::with('precios')->findOrFail($id);
-        return view('juegos.show', compact('juego')); // Pasar el juego a la vista 'juegos.show'
+        $juego = Juego::with(['precios'])->findOrFail($id);
+    
+        $reviews = Review::where('id_juego', $id)
+                ->where('aceptada', 1) // si quieres mostrar sólo las aceptadas
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+        return view('juegos.show', compact('juego', 'reviews'));
     }
+
 
     public function create()
     {

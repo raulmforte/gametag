@@ -85,6 +85,66 @@
         </div>
     </div>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h4>Deja tu review del juego</h4>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('reviews.store') }}" method="POST">
+                @csrf
+
+                <input type="hidden" name="id_juego" value="{{ $juego->id }}">
+
+                <div class="mb-3">
+                    <label for="nombre_reviewer" class="form-label">Tu nombre</label>
+                    <input type="text" class="form-control" id="nombre_reviewer" name="nombre_reviewer" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nota" class="form-label">Nota (1.0 - 10.0)</label>
+                    <input type="number" class="form-control" id="nota" name="nota" step="0.1" min="1" max="10" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="comentario" class="form-label">Comentario</label>
+                    <textarea class="form-control" id="comentario" name="comentario" rows="3" maxlength="255" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar review</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <h3 class="mb-4">{{ __('Reviews') }}</h3>
+
+    @if($reviews->isEmpty())
+        <p class="text-muted">{{ __('No reviews yet for this game.') }}</p>
+    @else
+        @foreach($reviews as $review)
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $review->nombre }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        {{ __('Score') }}: {{ number_format($review->nota, 1) }} / 10
+                    </h6>
+                    <p class="card-text">{{ $review->comentario }}</p>
+                    <small class="text-muted">{{ $review->created_at->format('d M Y, H:i') }}</small>
+                </div>
+            </div>
+        @endforeach
+    @endif
+</div>
+
+
+
     @include('partials.footer')
 
 
