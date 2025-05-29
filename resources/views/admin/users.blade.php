@@ -22,14 +22,14 @@
 
 <body>
     <!-- Menú lateral -->
-    @include('admin.sidebar')
+    @include('admin.sidebar') <!-- incluye el sidebar del administrador -->
 
     <!-- Contenido principal -->
     <div class="content-wrapper">
         <div class="container py-4">
             <h1 class="mb-4">Usuarios</h1>
 
-            <p><a href="{{ route('register') }}" class="btn btn-success">Registrar nuevo admin</a></p>
+            <p><a href="{{ route('register') }}" class="btn btn-success">Registrar nuevo admin</a></p> <!-- botón para registrar un nuevo administrador -->
 
             <div class="table-responsive">
                 <table class="table table-striped align-middle">
@@ -51,7 +51,7 @@
                                 <form action="{{ route('user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('¿Seguro que quieres eliminar este usuario?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Borrar</button> <!-- botón para borrar el usuario -->
                                 </form>
                             </td>
                         </tr>

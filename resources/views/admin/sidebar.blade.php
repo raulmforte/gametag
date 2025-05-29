@@ -27,12 +27,11 @@ use Illuminate\Support\Facades\Auth;
                     @csrf
                     <button class="btn btn-danger w-100" type="submit">Cerrar sesión</button>
                 </form>
-                
             </li>
             <li>
                 <form method="POST" action="{{ route('welcome') }}">
                     @csrf
-                    <button class="btn btn-success w-100" type="submit">Cerrar sesión</button>
+                    <button class="btn btn-success w-100" type="submit">Volver a la página principal</button>
                 </form>
             </li>
         </ul>
@@ -57,8 +56,8 @@ use Illuminate\Support\Facades\Auth;
         <li class="mt-3">
             <form action="{{ route('welcome') }}">
                 @csrf
-                <button class="btn btn-success w-100" type="submit">Volver a la pagina principal</button>
+                <button class="btn btn-success w-100" type="submit">Volver a la página principal</button>
             </form>
         </li>
     </ul>
-</nav>                                      admin.reviews.index
+</nav>

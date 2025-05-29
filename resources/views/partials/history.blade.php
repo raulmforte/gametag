@@ -9,14 +9,14 @@
                 <a href="{{ route('juegos.show', $juego->id) }}" class="text-decoration-none text-dark d-block">
                     <img src="{{ asset('fotos/' . $juego->imagen) }}"
                          alt="{{ __('Image of') }} {{ $juego->nombre }}"
-                         class="img-fluid rounded shadow-sm">
-                    <h5 class="text-primary mt-3">{{ $juego->nombre }}</h5>
-                    <p><strong>{{ \Carbon\Carbon::parse($juego->fecha)->format('d M Y') }}</strong></p>
+                         class="img-fluid rounded shadow-sm"> <!-- imagen del juego -->
+                    <h5 class="text-primary mt-3">{{ $juego->nombre }}</h5> <!-- nombre del juego -->
+                    <p><strong>{{ \Carbon\Carbon::parse($juego->fecha)->format('d M Y') }}</strong></p> <!-- fecha de publicación -->
                 </a>
             </div>
         @endforeach
     </div>
 
-    <button class="carousel-prev-custom">‹</button>
-    <button class="carousel-next-custom">›</button>
+    <button class="carousel-prev-custom">‹</button> <!-- botón para ir al elemento anterior -->
+    <button class="carousel-next-custom">›</button> <!-- botón para ir al siguiente elemento -->
 </div>

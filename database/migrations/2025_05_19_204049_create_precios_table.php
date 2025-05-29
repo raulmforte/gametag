@@ -6,26 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('precios', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->foreignId('juego_id')->constrained()->onDelete('cascade');
-            $table->string('plataforma');
-            $table->decimal('precio', 8, 2);
-            $table->string('url_compra');
+            $table->id(); // id único para cada precio
+            $table->timestamps(); // columnas created_at y updated_at
+            $table->foreignId('juego_id')->constrained()->onDelete('cascade'); // id del juego asociado con eliminación en cascada
+            $table->string('plataforma'); // plataforma donde está disponible el juego
+            $table->decimal('precio', 8, 2); // precio del juego con precisión de 8 dígitos y 2 decimales
+            $table->string('url_compra'); // enlace para comprar el juego
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('precios');
+        Schema::dropIfExists('precios'); // elimina la tabla 'precios'
     }
 };

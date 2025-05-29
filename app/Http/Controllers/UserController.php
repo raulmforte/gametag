@@ -18,22 +18,17 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        // Recupera todos los usuarios
-        $users = User::all();                                   
-        return view('admin.users', compact('users'));
+        $users = User::all(); // recupera todos los usuarios
+        return view('admin.users', compact('users')); // pasa los usuarios a la vista 'admin.users'
     }
     
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id); // busca el usuario por ID o lanza un error si no se encuentra
 
-        // 2) Elimina el usuario
-        $user->delete();                                     
+        $user->delete(); // elimina el usuario de la base de datos
 
-        // 3) Redirige con mensaje de éxito
-        return redirect()->route('users')
-                         ->with('status', 'usuario eliminado correctamente');
+        return redirect()->route('users') // redirige a la lista de usuarios
+                         ->with('status', 'usuario eliminado correctamente'); // muestra mensaje de éxito
     }
-  
- 
 }

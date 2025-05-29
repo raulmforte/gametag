@@ -11,50 +11,42 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
     public function edit(Request $request): View
     {
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $request->user(), // pasa el usuario autenticado a la vista 'profile.edit'
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
+   
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $request->user()->fill($request->validated()); // llena los datos del usuario con los valores validados
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($request->user()->isDirty('email')) { // verifica si el email fue modificado
+            $request->user()->email_verified_at = null; // reinicia la verificación del email
         }
 
-        $request->user()->save();
+        $request->user()->save(); // guarda los cambios en la base de datos
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('status', 'profile-updated'); // redirige con un mensaje de éxito
     }
 
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
+            'password' => ['required', 'current_password'], // valida que la contraseña actual sea correcta
         ]);
 
-        $user = $request->user();
+        $user = $request->user(); // obtiene el usuario autenticado
 
-        Auth::logout();
+        Auth::logout(); // cierra la sesión del usuario
 
-        $user->delete();
+        $user->delete(); // elimina el usuario de la base de datos
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        $request->session()->invalidate(); // invalida la sesión actual
+        $request->session()->regenerateToken(); // regenera el token de la sesión
 
-        return Redirect::to('/');
+        return Redirect::to('/'); // redirige a la página principal
     }
 }

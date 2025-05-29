@@ -6,25 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNoticiasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('noticias', function (Blueprint $table) {
-            $table->id();
-            $table->string('titular');
-            $table->text('descripcion');
-            $table->string('imagen')->nullable(); // Ruta o nombre de la imagen
-            $table->timestamps(); // Crea created_at y updated_at
+            $table->id(); // id único para cada noticia
+            $table->string('titular'); // titular de la noticia
+            $table->text('descripcion'); // descripción de la noticia
+            $table->string('imagen')->nullable(); // ruta o nombre de la imagen, opcional
+            $table->timestamps(); // columnas created_at y updated_at
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('noticias');
+        Schema::dropIfExists('noticias'); // elimina la tabla 'noticias'
     }
 }

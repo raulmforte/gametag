@@ -12,20 +12,20 @@
 </head>
 
 <body>
-    @include('admin.sidebar')
+    @include('admin.sidebar') <!-- incluye el sidebar del administrador -->
 
     <div class="container py-5" style="margin-left: 250px;">
         <h1 class="mb-4">Editar Noticia</h1>
 
         @if(session('status'))
-            <div class="alert alert-success">{{ session('status') }}</div>
+            <div class="alert alert-success">{{ session('status') }}</div> <!-- muestra mensaje de éxito -->
         @endif
 
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">
                     @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li>{{ $error }}</li> <!-- muestra los errores de validación -->
                     @endforeach
                 </ul>
             </div>
@@ -40,7 +40,7 @@
                 <div class="mb-3">
                     <label class="form-label">Imagen actual:</label>
                     <div>
-                        <img src="{{ asset('fotos/' . $noticia->imagen) }}" alt="Imagen noticia" class="img-thumbnail" style="max-width: 300px;">
+                        <img src="{{ asset('fotos/' . $noticia->imagen) }}" alt="Imagen noticia" class="img-thumbnail" style="max-width: 300px;"> <!-- muestra la imagen actual de la noticia -->
                     </div>
                 </div>
             @endif
@@ -50,7 +50,7 @@
                 <label for="imagen" class="form-label">Cambiar imagen (opcional)</label>
                 <input class="form-control @error('imagen') is-invalid @enderror" type="file" name="imagen" id="imagen" />
                 @error('imagen')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback">{{ $message }}</div> <!-- muestra error si la imagen no es válida -->
                 @enderror
             </div>
 
@@ -59,7 +59,7 @@
                 <label for="titular" class="form-label">Titular</label>
                 <input type="text" name="titular" id="titular" 
                        class="form-control @error('titular') is-invalid @enderror"
-                       value="{{ old('titular', $noticia->titular) }}" />
+                       value="{{ old('titular', $noticia->titular) }}" /> <!-- campo para editar el titular de la noticia -->
                 @error('titular')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -69,14 +69,14 @@
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
                 <textarea name="descripcion" id="descripcion" rows="6"
-                          class="form-control @error('descripcion') is-invalid @enderror">{{ old('descripcion', $noticia->descripcion) }}</textarea>
+                          class="form-control @error('descripcion') is-invalid @enderror">{{ old('descripcion', $noticia->descripcion) }}</textarea> <!-- campo para editar la descripción -->
                 @error('descripcion')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary">Actualizar Noticia</button>
-            <a href="{{ route('news3') }}" class="btn btn-secondary ms-2">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Actualizar Noticia</button> <!-- botón para actualizar la noticia -->
+            <a href="{{ route('news3') }}" class="btn btn-secondary ms-2">Cancelar</a> <!-- botón para cancelar -->
         </form>
     </div>
 
@@ -89,7 +89,7 @@
         ClassicEditor
             .create(document.querySelector('#descripcion'))
             .catch(error => {
-                console.error(error);
+                console.error(error); // muestra error si CKEditor falla
             });
     </script>
 </body>

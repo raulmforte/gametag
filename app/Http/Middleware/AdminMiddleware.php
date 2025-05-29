@@ -9,16 +9,15 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminMiddleware
 {
     /**
-     * Handle an incoming request.
-     *
+    * Maneja la solicitud entrante y verifica si el usuario es administrador.
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user() && auth()->user()->is_admin) {
-        return $next($request);
-    }
+        if (auth()->user() && auth()->user()->is_admin) { // verifica si el usuario está autenticado y es administrador
+            return $next($request); // permite continuar con la solicitud
+        }
 
-    abort(403, 'No tienes permiso para acceder a esta página.');
+        abort(403, 'No tienes permiso para acceder a esta página.'); // muestra error 403 si no tiene permisos
     }
-}
+} 
