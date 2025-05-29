@@ -119,18 +119,15 @@ public function store(Request $request)
         $request->validate([
             'nombre'        => 'required|string|max:255',
             'genero'        => 'required|string|max:255',
-            // imagen opcional
-            'imagen'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            // trailer opcional
+            'imagen'        => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'trailer'       => 'nullable|url|max:255',
             'descripcion'   => 'nullable|string',
+            'fecha'         => 'nullable|date',
             'plataformas.*' => 'required|string|max:255',
             'precios.*'     => 'required|numeric',
-            // URL de compra opcional y texto libre
             'urls.*'        => 'nullable|string|max:255',
         ]);
 
-        // Subir imagen
         $nombreImagen = null;
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
@@ -138,19 +135,18 @@ public function store(Request $request)
             $file->move(public_path('fotos'), $nombreImagen);
         }
 
-        // Crear el juego
         $juego = Juego::create([
             'nombre'      => $request->nombre,
             'genero'      => $request->genero,
             'descripcion' => $request->descripcion,
             'trailer'     => $request->trailer,
             'imagen'      => $nombreImagen,
+            'fecha'       => $request->fecha,  // Aquí se guarda la fecha
             'created_at'  => now(),
         ]);
 
         Log::info('Juego creado', ['id' => $juego->id]);
 
-        // Guardar los precios asociados
         $plataformas = $request->input('plataformas');
         $precios     = $request->input('precios');
         $urls        = $request->input('urls', []);
@@ -167,15 +163,13 @@ public function store(Request $request)
             ]);
         }
 
-        Log::info('Precios guardados correctamente');
         return redirect()->route('juegos')->with('status', 'Juego creado correctamente.');
     } catch (\Exception $e) {
         Log::error('Error al crear juego: '.$e->getMessage(), ['trace'=>$e->getTraceAsString()]);
-        return back()
-            ->withErrors(['error'=>'Ocurrió un error al guardar el juego. Revisa los logs.'])
-            ->withInput();
+        return back()->withErrors(['error'=>'Ocurrió un error al guardar el juego.'])->withInput();
     }
 }
+
 
 public function destroy($id)
 {
@@ -211,43 +205,38 @@ public function destroy($id)
 
 public function update(Request $request, $id)
 {
-    // Validar los datos del formulario
     $data = $request->validate([
         'nombre'        => 'required|string|max:255',
         'genero'        => 'required|string|max:255',
-        'imagen'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'imagen'        => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         'trailer'       => 'nullable|url|max:255',
         'descripcion'   => 'nullable|string',
+        'fecha'         => 'nullable|date',
         'precio_ids.*'  => 'required|integer|exists:precios,id',
         'plataformas.*' => 'required|string|max:255',
         'precios.*'     => 'required|numeric|min:0',
         'urls.*'        => 'nullable|string|max:255',
     ]);
 
-    // Buscar el juego
     $juego = Juego::with('precios')->findOrFail($id);
 
-    // Reemplazo de imagen si se sube una nueva
     if ($request->hasFile('imagen')) {
-        // Borrar imagen antigua
         if ($juego->imagen && File::exists(public_path('fotos/' . $juego->imagen))) {
             File::delete(public_path('fotos/' . $juego->imagen));
         }
-        // Guardar la nueva
         $file = $request->file('imagen');
         $nombreImagen = Str::uuid() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('fotos'), $nombreImagen);
         $juego->imagen = $nombreImagen;
     }
 
-    // Actualizar campos del juego
     $juego->nombre      = $data['nombre'];
     $juego->genero      = $data['genero'];
     $juego->trailer     = $data['trailer'] ?? null;
     $juego->descripcion = $data['descripcion'] ?? null;
+    $juego->fecha       = $data['fecha'] ?? null; // ← Aquí se actualiza la fecha
     $juego->save();
 
-    // Actualizar cada precio existente
     $precioIds   = $request->input('precio_ids', []);
     $plataformas = $request->input('plataformas', []);
     $precios     = $request->input('precios', []);
@@ -261,9 +250,7 @@ public function update(Request $request, $id)
         $precio->save();
     }
 
-    return redirect()
-        ->route('juegos')
-        ->with('status', 'Juego actualizado correctamente.');
+    return redirect()->route('juegos')->with('status', 'Juego actualizado correctamente.');
 }
 
 }

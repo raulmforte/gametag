@@ -1,12 +1,10 @@
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>{{ $noticia->nombre }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1H2Fgq5L6bY4QZV9zzTtmI3Uod8GCExl3Og8ifwB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -27,16 +25,13 @@
                 <h1 class="card-title">{{ $noticia->titular }}</h1>
                 <p class="card-text">{!! $noticia->descripcion !!}</p>
             </div>
-            @if($noticia->imagenes && $noticia->imagenes->count())
-            <div class="row">
-                @foreach($noticia->imagenes as $imagen)
-                <div class="col-md-6 mb-3">
-                    <img src="{{ asset('fotos/noticias/' . $imagen->nombre_imagen) }}" class="img-fluid rounded"
-                        alt="{{ $noticia->titular }}">
-                </div>
-                @endforeach
+            @if($noticia->imagen)
+            <div class="text-center my-4">
+                <img src="{{ asset('fotos/' . $noticia->imagen) }}" class="img-fluid rounded shadow"
+                    alt="Imagen de la categoría {{ $noticia->titular }}" style="max-height: 500px; object-fit: cover;">
             </div>
             @endif
+
 
         </div>
 

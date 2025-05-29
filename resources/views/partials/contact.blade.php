@@ -1,4 +1,4 @@
-<contacto id="contacto" class="mb-5">
+<contacto id="contacto" class="mb-5 mt-5">
     <div class="d-flex justify-content-center align-items-center">
         <form method="POST" class="formulario" action="{{ route('contacto.enviar') }}">
             @csrf

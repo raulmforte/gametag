@@ -34,7 +34,7 @@
                 </div>
                 
                 <p class="text-justify lead" style="line-height: 1.6;">
-                    {{ $juego->descripcion }}
+                    {!! $juego->descripcion !!}
                 </p>
             </div>
         </div> 

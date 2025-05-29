@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,7 @@ class Juego extends Model
         'descripcion',
         'trailer',
         'imagen',
+        'fecha',  // <-- Aquí agregamos la fecha
     ];
 
     public function precios()
@@ -21,12 +23,13 @@ class Juego extends Model
         return $this->hasMany(Precio::class);
     }
 
-    public function usuario(){
+    public function usuario()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function updated_by(){
-        return $this->belongsTO(User::class, 'updated_by');
-
+    public function updated_by()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

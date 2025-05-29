@@ -1,41 +1,65 @@
 <header class="cabezera">
     <style>
-        /* Estilo para los enlaces del header */
         .fixed-header a {
-            color: #000 !important; /* Color inicial del texto (negro) */
+            color: #000 !important;
             text-decoration: none !important;
-            transition: color 0.3s ease !important; /* Transición suave */
+            transition: color 0.3s ease !important;
         }
 
         .fixed-header a:hover {
-            color: #d35400 !important; /* Naranja más oscuro al pasar el mouse */
+            color: #d35400 !important;
+        }
+
+        .nav-link-custom {
+            margin-left: 1rem;
+        }
+
+        .header-logo {
+            flex: 1;
+        }
+
+        .header-title {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-nav {
+            flex: 1;
+            text-align: right;
         }
     </style>
 
     <div class="top-bar bg-dark text-white d-flex align-items-center justify-content-end p-1 fuente header-negro"></div>
 
     <div class="fixed-header bg-white text-dark d-flex align-items-center justify-content-between p-3 fixed-top">
-        <!-- Logo principal -->
-        <a href="{{ route('welcome') }}">
-            <img src="{{ asset('fotos/logo.png') }}" style="width: auto; height: 80px;" class="img-fluid rounded mt-0 mb-0 top" alt="Logo">
-        </a>
-        <a href="{{ route('welcome') }}">
-            <img src="{{ asset('fotos/letras2.png') }}" style="width: auto; height: 80px;" class="img-fluid rounded mt-0 mb-0 top" alt="Logo2">
-        </a>
-
-        <!-- Navegación -->
-        <div class="d-flex align-items-center">
-            
-        <div class="language-selector">
-        <a href="{{ route('welcome', 'es') }}">ES</a> | 
-        <a href="{{ route('welcome', 'en') }}">EN</a> | 
-        <a href="{{ route('welcome', ['lang' => 'fr']) }}">FR</a>
+        <!-- Logo a la izquierda -->
+        <div class="header-logo">
+            <a href="{{ route('welcome') }}">
+                <img src="{{ asset('fotos/logo.png') }}" style="height: 80px;" class="img-fluid rounded" alt="Logo">
+            </a>
         </div>
-            <!-- Idiomas -->
-        <!--    <div class="d-flex gap-2">
-            <a href="{{ route('welcome', ['lang' => 'es']) }}">ES</a>
-            <a href="{{ route('welcome', ['lang' => 'en']) }}">EN</a>
-            <a href="{{ route('welcome', ['lang' => 'fr']) }}">FR</a>
-            </div>-->
+
+        <!-- Título en el centro -->
+        <div class="header-title">
+            <a href="{{ route('welcome') }}">
+                <img src="{{ asset('fotos/letras2.png') }}" style="height: 80px;" class="img-fluid rounded" alt="Título">
+            </a>
+        </div>
+
+        <!-- Navegación a la derecha -->
+        <div class="header-nav d-flex flex-column align-items-end">
+            <div class="d-flex gap-3">
+                <a class="nav-link-custom" href="{{ route('welcome') }}#inicio">{{ __('Inicio') }}</a>
+                <a class="nav-link-custom" href="{{ route('news2') }}">{{ __('Noticias') }}</a>
+                <a class="nav-link-custom" href="{{ route('welcome') }}#contacto">{{ __('Contacto') }}</a>
+                <a class="nav-link-custom" href="{{ route('hot_new') }}">{{ __('Noticia del momento') }}</a>
+
+            </div>
+            <div class="language-selector mt-1">
+                <a href="{{ route('welcome', 'es') }}">ES</a> |
+                <a href="{{ route('welcome', 'en') }}">EN</a> |
+                <a href="{{ route('welcome', ['lang' => 'fr']) }}">FR</a>
+            </div>
+        </div>
     </div>
 </header>

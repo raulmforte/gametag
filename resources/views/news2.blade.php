@@ -37,7 +37,7 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ $noticia->titular }}</h5>
                             @if($noticia->created_at->greaterThan($fechaReferencia))
-                            <p>{{ $noticia->created_at }}</p>
+                            <p>{{ $noticia->created_at->format('d/m/Y') }}</p>
                             @endif
                         </div>
                     </a>

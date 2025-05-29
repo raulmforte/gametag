@@ -3,28 +3,31 @@
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 <style>
-    @media (min-width: 992px) {
-        .content-wrapper {
-            margin-left: 250px;
-        }
+@media (min-width: 992px) {
+    .content-wrapper {
+        margin-left: 250px;
     }
+}
 </style>
+        @include('admin.sidebar')
+
 <div class="content-wrapper">
+
     <div class="container py-5">
         <h1 class="mb-4">Editar Juego</h1>
 
         @if(session('status'))
-            <div class="alert alert-success">{{ session('status') }}</div>
+        <div class="alert alert-success">{{ session('status') }}</div>
         @endif
 
         @if($errors->any())
-            <div class="alert alert-danger">
-                <ul class="mb-0">
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
         <form action="{{ route('juegos.update', $juego->id) }}" method="POST" enctype="multipart/form-data">
@@ -33,12 +36,13 @@
 
             <!-- Imagen actual -->
             @if($juego->imagen)
-                <div class="mb-3">
-                    <label class="form-label">Imagen actual:</label>
-                    <div>
-                        <img src="{{ asset('fotos/' . $juego->imagen) }}" alt="Imagen juego" class="img-thumbnail" style="max-width: 300px;">
-                    </div>
+            <div class="mb-3">
+                <label class="form-label">Imagen actual:</label>
+                <div>
+                    <img src="{{ asset('fotos/' . $juego->imagen) }}" alt="Imagen juego" class="img-thumbnail"
+                        style="max-width: 300px;">
                 </div>
+            </div>
             @endif
 
             <!-- Cambiar imagen -->
@@ -51,9 +55,8 @@
             <!-- Nombre -->
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" name="nombre" id="nombre"
-                       class="form-control @error('nombre') is-invalid @enderror"
-                       value="{{ old('nombre', $juego->nombre) }}">
+                <input type="text" name="nombre" id="nombre" class="form-control @error('nombre') is-invalid @enderror"
+                    value="{{ old('nombre', $juego->nombre) }}">
                 @error('nombre')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
 
@@ -63,7 +66,8 @@
                 <select name="genero" id="genero" class="form-select @error('genero') is-invalid @enderror">
                     <option value="" disabled>Selecciona un genero</option>
                     @foreach(['simulacion','accion','rol','novela visual','terror','estrategia'] as $genre)
-                        <option value="{{ $genre }}" {{ old('genero', $juego->genero)==$genre?'selected':'' }}>{{ ucfirst($genre) }}</option>
+                    <option value="{{ $genre }}" {{ old('genero', $juego->genero)==$genre?'selected':'' }}>
+                        {{ ucfirst($genre) }}</option>
                     @endforeach
                 </select>
                 @error('genero')<div class="invalid-feedback">{{ $message }}</div>@enderror
@@ -73,8 +77,8 @@
             <div class="mb-3">
                 <label for="trailer" class="form-label">URL del trailer</label>
                 <input type="text" name="trailer" id="trailer"
-                       class="form-control @error('trailer') is-invalid @enderror"
-                       value="{{ old('trailer', $juego->trailer) }}">
+                    class="form-control @error('trailer') is-invalid @enderror"
+                    value="{{ old('trailer', $juego->trailer) }}">
                 @error('trailer')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
 
@@ -82,32 +86,41 @@
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
                 <textarea name="descripcion" id="descripcion" rows="6"
-                          class="form-control @error('descripcion') is-invalid @enderror">{{ old('descripcion', $juego->descripcion) }}</textarea>
+                    class="form-control @error('descripcion') is-invalid @enderror">{{ old('descripcion', $juego->descripcion) }}</textarea>
                 @error('descripcion')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
+
+            <!-- Fecha de publicación -->
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha de publicación</label>
+                <input type="date" name="fecha" id="fecha" class="form-control @error('fecha') is-invalid @enderror"
+                    value="{{ old('fecha', $juego->fecha ? \Carbon\Carbon::parse($juego->fecha)->format('Y-m-d') : '') }}">
+                @error('fecha')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+
 
             <!-- Precios existentes -->
             <h4 class="mt-4">Precios actuales</h4>
             <div id="precios-existing">
                 @foreach($juego->precios as $index => $precio)
-                    <div class="precio mb-3 border p-3 rounded bg-light">
-                        <input type="hidden" name="precio_ids[]" value="{{ $precio->id }}">
-                        <div class="mb-2">
-                            <label class="form-label">Plataforma</label>
-                            <input type="text" name="plataformas[]" class="form-control"
-                                   value="{{ old('plataformas.'.$index, $precio->plataforma) }}">
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">Precio (€)</label>
-                            <input type="text" name="precios[]" class="form-control"
-                                   value="{{ old('precios.'.$index, $precio->precio) }}">
-                        </div>
-                        <div>
-                            <label class="form-label">URL de compra</label>
-                            <input type="text" name="urls[]" class="form-control"
-                                   value="{{ old('urls.'.$index, $precio->url_compra) }}">
-                        </div>
+                <div class="precio mb-3 border p-3 rounded bg-light">
+                    <input type="hidden" name="precio_ids[]" value="{{ $precio->id }}">
+                    <div class="mb-2">
+                        <label class="form-label">Plataforma</label>
+                        <input type="text" name="plataformas[]" class="form-control"
+                            value="{{ old('plataformas.'.$index, $precio->plataforma) }}">
                     </div>
+                    <div class="mb-2">
+                        <label class="form-label">Precio (€)</label>
+                        <input type="text" name="precios[]" class="form-control"
+                            value="{{ old('precios.'.$index, $precio->precio) }}">
+                    </div>
+                    <div>
+                        <label class="form-label">URL de compra</label>
+                        <input type="text" name="urls[]" class="form-control"
+                            value="{{ old('urls.'.$index, $precio->url_compra) }}">
+                    </div>
+                </div>
                 @endforeach
             </div>
 
@@ -123,5 +136,5 @@
 <!-- CKEditor -->
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script>
-    ClassicEditor.create(document.querySelector('#descripcion')).catch(error => console.error(error));
+ClassicEditor.create(document.querySelector('#descripcion')).catch(error => console.error(error));
 </script>

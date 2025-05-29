@@ -23,17 +23,20 @@
 
 .carrusel-item {
     flex: 0 0 25%;
-    /* 4 items visibles */
     box-sizing: border-box;
     background: #f9f9f9;
     padding: 0.5rem;
     border-radius: 4px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .carrusel-item img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
     border-radius: 4px;
 }
 
@@ -66,7 +69,9 @@
 }
 </style>
 
-<div class="mb-5">
+
+<div class="mb-5 mt-5">
+    <h1 class="text-center mt-5 mb-5">Noticias</h1>
     <div class="noticias-carrusel-container">
         <button class="carrusel-btn carrusel-prev">‹</button>
 
@@ -74,18 +79,21 @@
             <div class="carrusel-track">
                 @foreach($noticias as $noticia)
                 <div class="carrusel-item">
-                    <img src="{{ asset('fotos/' . $noticia->imagen) }}" alt="{{ $noticia->titular }}" />
-                    <h5>{{ $noticia->titular }}</h5>
-                    <p>{!! Str::limit($noticia->descripcion, 100) !!}</p>
+                    <a href="{{ route('news2_mostrar', $noticia->id) }}" class="text-decoration-none text-dark d-block">
+                        <img src="{{ asset('fotos/' . $noticia->imagen) }}" alt="{{ $noticia->titular }}" />
+                        <h5 class="mt-2">{{ $noticia->titular }}</h5>
+                        <p class="small">{!! Str::limit($noticia->descripcion, 100) !!}</p>
+                    </a>
                 </div>
                 @endforeach
             </div>
+
         </div>
 
         <button class="carrusel-btn carrusel-next">›</button>
     </div>
 
-    <div class="d-flex justify-content-center mt-4">
+    <div class="d-flex justify-content-center mt-5">
         <a href="{{ route('news2') }}" class="btn btn-warning px-4"
             style="background-color: #ff6600; border:none; color: white; font-weight: 600;">
             {{ __('More news') }}

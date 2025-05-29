@@ -216,4 +216,4 @@ if (app()->environment('local')) {
         return 'Correo enviado';
     });
 }
-
+Route::get('/hot_new', [HomeController::class, 'hot_new'])->name('hot_new');

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $juego->nombre }} – {{ __('Game') }}</title>
+    <title>{{ $noticia->titular }} – {{ __('Noticia') }}</title>
 
     <!-- Estilos -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -13,35 +13,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="noticia-pag">
+<body class="noticia-pag mb-5">
     @include('partials.header')
 
     <article class="gt-article">
         <header class="gt-article-header">
-            <h1 class="gt-article-title">{{ $juego->nombre }}</h1>
-            <p class="gt-article-date">{{ __('Genre') }}: {{ $juego->genero }}</p>
+            <h1 class="gt-article-title">{{ $noticia->titular }}</h1>
+            <p class="gt-article-date">{{ __('Fecha de publicación') }}: {{ $noticia->created_at->format('d/m/Y') }}</p>
         </header>
 
         <section class="gt-article-body">
             <p class="gt-article-lead">
-                <strong>{{ strip_tags($juego->descripcion. '<p><i><ul><strong>') }}</strong>
+                <strong>{!! strip_tags($noticia->descripcion, '<p><i><ul><strong><em><br>') !!}</strong>
             </p>
 
-            @if($juego->trailer)
-                <div class="ratio ratio-16x9 mb-3">
-                    <iframe src="{{ $juego->trailer }}" title="{{ __('Trailer of') }} {{ $juego->nombre }}" allowfullscreen></iframe>
-                </div>
-            @endif
-
-            @if($juego->imagen)
-                <img src="{{ asset('fotos/' . $juego->imagen) }}" class="img-fluid rounded shadow-sm" alt="Imagen del juego {{ $juego->nombre }}">
+            @if($noticia->imagen)
+                <img src="{{ asset('fotos/' . $noticia->imagen) }}" class="img-fluid rounded shadow-sm" alt="Imagen de la noticia {{ $noticia->titular }}">
             @endif
         </section>
 
-        <footer class="gt-article-footer mt-4">
-            <span class="gt-article-source-label">Fuente:</span>
-            <a class="gt-article-source-link" href="#" onclick="return false;">Base de datos interna</a>
-        </footer>
     </article>
 
     @include('partials.footer')

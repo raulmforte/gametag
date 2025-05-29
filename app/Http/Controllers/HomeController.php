@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use App\Models\Noticia;
 use Carbon\Carbon;
+use App\Models\Juego;
+
 
 class HomeController extends Controller
 {
@@ -19,15 +21,16 @@ class HomeController extends Controller
 {
     $noticias = Noticia::orderBy('created_at', 'desc')->take(8)->get();
 
-    $juegos = \App\Models\Juego::orderBy('created_at', 'desc')->take(12)->get();
+    $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get();
+
 
     return view('welcome', compact('noticias', 'juegos'));
 }
 
     public function hot_new()
     {
-        $juego = \App\Models\Juego::orderBy('id', 'desc')->first();
-        return view('partials.hot_new', compact('juego'));
+        $noticia = \App\Models\Noticia::orderBy('id', 'desc')->first();
+        return view('partials.hot_new', compact('noticia'));
     }
 
     public function sobre_nosotros()
