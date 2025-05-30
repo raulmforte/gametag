@@ -41,7 +41,7 @@
     </style>
 
     <div class="marcas-todo mt-5 mb-5">
-        <h2 class="fuente-titulo text-center">{{ __('Recommended stores') }}</h2>
+        <h2 class="fuente-titulo text-center">Tiendas recomendadas</h2>
         <hr class="linea-azul">
         <div class="container marcas">
             <div class="marca">

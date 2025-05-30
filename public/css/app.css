@@ -800,6 +800,11 @@ body {
   width: 1000px;
 }
 
+.btn-custom{
+  background-color: #db6707 !important;
+  border: #f8f9fa !important;
+}
+
 /*GENERAL CSS*/
 
 .fuente{

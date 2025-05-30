@@ -3,25 +3,25 @@
         <form method="POST" class="formulario" action="{{ route('contacto.enviar') }}">
             @csrf
             <div class="contacto-titulo">
-                <h2 class="fuente-titulo">{{ __('Contact') }}</h2>
+                <h2 class="fuente-titulo">Contacto</h2>
                 <hr class="linea-azul"> <!-- línea decorativa -->
             </div>
             <div class="mb-3 contacto">
-                <label for="nombre" class="form-label">{{ __('Name') }}</label> <!-- etiqueta para el campo de nombre -->
+                <label for="nombre" class="form-label">Nombre</label> <!-- etiqueta para el campo de nombre -->
                 <input type="text" class="form-control custom-border" id="nombre" name="nombre"
                     value="{{ old('nombre') }}" required> <!-- campo de entrada para el nombre -->
                 @error('nombre') <small class="text-danger">{{ $message }}</small> @enderror <!-- muestra errores de validación -->
             </div>
 
             <div class="mb-3 contacto">
-                <label for="email" class="form-label">{{ __('Email') }}</label> <!-- etiqueta para el campo de email -->
+                <label for="email" class="form-label">Correo electrónico</label> <!-- etiqueta para el campo de email -->
                 <input type="email" class="form-control custom-border" id="email" name="email"
                     value="{{ old('email') }}" required> <!-- campo de entrada para el email -->
                 @error('email') <small class="text-danger">{{ $message }}</small> @enderror <!-- muestra errores de validación -->
             </div>
 
             <div class="mb-3 contacto">
-                <label for="mensaje" class="form-label">{{ __('Message') }}</label> <!-- etiqueta para el campo de mensaje -->
+                <label for="mensaje" class="form-label">Mensaje</label> <!-- etiqueta para el campo de mensaje -->
                 <textarea class="form-control custom-border" id="mensaje" name="mensaje" rows="4"
                     required>{{ old('mensaje') }}</textarea> <!-- campo de entrada para el mensaje -->
                 @error('mensaje') <small class="text-danger">{{ $message }}</small> @enderror <!-- muestra errores de validación -->
@@ -38,7 +38,7 @@
                         });
                 });
             </script>
-            <button type="submit" class="btn btn-primary">{{ __('Send') }}</button> <!-- botón para enviar el formulario -->
+            <button type="submit" class="btn btn-primary btn-custom">Enviar</button> <!-- botón para enviar el formulario -->
         </form>
     </div>
 </contacto>

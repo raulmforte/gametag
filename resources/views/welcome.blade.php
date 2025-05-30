@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8"> <!-- establece la codificación de caracteres -->
@@ -39,15 +39,15 @@
     <div class="sobre-nosotros d-flex align-items-center justify-content-center" 
      style="height: 300px; background-color: #2c3e50;"> <!-- Ajusta altura y color -->
     <a href="{{ route('sobre_nosotros') }}" class="text-decoration-none text-white">
-        <h2 class="fuente-titulo m-0">{{ __('About us') }}</h2> <!-- enlace a la sección "Sobre nosotros" -->
+        <h2 class="fuente-titulo m-0">Sobre nosotros</h2> <!-- enlace a la sección "Sobre nosotros" -->
     </a>
 </div>
 
     <section class="cta-noticia">
         <a href="{{ route('hot_new')}}" class="cta-enlace">
             <div class="cta-contenido">
-            <h2 class="cta-titulo">{{ __("Don't miss the news of the moment!") }}</h2> <!-- llamada a la acción -->
-                <p class="cta-descripcion">{{ __('Click here for more information') }}</p>
+            <h2 class="cta-titulo">¡No te pierdas la noticia del momento!</h2> <!-- llamada a la acción -->
+                <p class="cta-descripcion">Haz clic aquí para más información</p>
             </div>
         </a>
     </section>

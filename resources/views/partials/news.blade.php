@@ -49,7 +49,7 @@
     </style>
 
     <div class="noticias-titulo">
-        <h2 class="fuente-titulo">News</h2>
+        <h2 class="fuente-titulo">Noticias</h2>
         <hr class="linea-azul">
     </div>
     <div class="contenedor-noticias">

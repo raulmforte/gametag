@@ -16,7 +16,7 @@
     </style>
 
     <div id="titulo-categorias" class="titulo-categorias mt-5 mb-5">
-        <h2 class="text-center fuente-titulo">{{ __('Categories') }}</h2>
+        <h2 class="text-center fuente-titulo">Categorías</h2>
         <hr class="linea-azul">
     </div>
     <div class="container">

@@ -84,9 +84,9 @@
 </style>
 
 <div class="mb-5 mt-5">
-    <h1 class="text-center mt-5 mb-5">{{ __('news') }}</h1>
+    <h1 class="text-center mt-5 mb-5">Noticias</h1>
     <div class="noticias-carrusel-container">
-        <button class="carrusel-btn carrusel-prev" aria-label="Previous news">‹</button>
+        <button class="carrusel-btn carrusel-prev" aria-label="Noticias anteriores">‹</button>
         <div class="carrusel-viewport">
             <div class="carrusel-track">
                 @foreach($noticias as $noticia)
@@ -100,13 +100,13 @@
                 @endforeach
             </div>
         </div>
-        <button class="carrusel-btn carrusel-next" aria-label="Next news">›</button>
+        <button class="carrusel-btn carrusel-next" aria-label="Noticias siguientes">›</button>
     </div>
 
     <div class="d-flex justify-content-center mt-5">
         <a href="{{ route('news2') }}" class="btn btn-warning px-4"
             style="background-color: #ff6600; border:none; color: white; font-weight: 600;">
-            {{ __('More news') }}
+            Más noticias
         </a>
     </div>
 </div>
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentIndex = 0;
 
-    // Función para calcular cuántos ítems se ven segun pantalla
+    // Función para calcular cuántos ítems se ven según pantalla
     function getItemsVisible() {
         const width = window.innerWidth;
         if (width >= 1024) return 4;

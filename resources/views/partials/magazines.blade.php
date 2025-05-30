@@ -1,6 +1,6 @@
 <revistas class="revistas">
     <div class="revistas-titulo">
-        <h2 class="fuente-titulo">{{ __('Magazines') }}</h2>
+        <h2 class="fuente-titulo">Revistas</h2>
         <hr class="linea-azul"> <!-- línea decorativa -->
     </div>
     <div class="revista-carousel-wrapper">

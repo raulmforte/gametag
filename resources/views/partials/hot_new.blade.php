@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $noticia->titular }} – {{ __('Noticia') }}</title>
+    <title>{{ $noticia->titular }} – Noticia</title>
 
     <!-- Estilos -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet"> <!-- incluye el CSS compilado -->
@@ -19,7 +19,7 @@
     <article class="gt-article">
         <header class="gt-article-header">
             <h1 class="gt-article-title">{{ $noticia->titular }}</h1> <!-- título de la noticia -->
-            <p class="gt-article-date">{{ __('Fecha de publicación') }}: {{ $noticia->created_at->format('d/m/Y') }}</p> <!-- fecha de publicación -->
+            <p class="gt-article-date">Fecha de publicación: {{ $noticia->created_at->format('d/m/Y') }}</p> <!-- fecha de publicación -->
         </header>
 
         <section class="gt-article-body">
