@@ -1,100 +1,112 @@
 <style>
 .noticias-carrusel-container {
-    position: relative; /* posiciona el contenedor */
-    max-width: 2000px; /* ancho máximo */
-    margin: 0 auto; /* centra el contenedor */
-    padding: 1rem; /* espacio interno */
-    overflow: hidden; /* oculta el contenido desbordado */
-    background: #fff; /* fondo blanco */
-    border-radius: 6px; /* bordes redondeados */
-    box-shadow: 0 0 10px rgb(0 0 0 / 0.1); /* sombra ligera */
+    position: relative;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 1rem;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
 }
 
 .carrusel-viewport {
-    overflow: hidden; /* oculta el contenido desbordado */
-    width: 100%; /* ocupa todo el ancho */
+    overflow: hidden;
+    width: 100%;
 }
 
 .carrusel-track {
-    display: flex; /* usa flexbox para los elementos */
-    transition: transform 0.4s ease; /* transición suave */
-    gap: 1rem; /* espacio entre los elementos */
+    display: flex;
+    transition: transform 0.4s ease;
+    gap: 1rem; /* 1rem = 16px aprox */
 }
-
 .carrusel-item {
-    flex: 0 0 25%; /* cada elemento ocupa el 25% del contenedor */
-    box-sizing: border-box; /* incluye el padding y borde en el tamaño */
-    background: #f9f9f9; /* fondo gris claro */
-    padding: 0.5rem; /* espacio interno */
-    border-radius: 4px; /* bordes redondeados */
-    text-align: center; /* texto centrado */
-    display: flex; /* usa flexbox */
-    flex-direction: column; /* organiza los elementos en columna */
-    align-items: center; /* centra los elementos horizontalmente */
+    flex: 0 0 100%; /* por defecto 1 item */
+    box-sizing: border-box;
+    background: #f9f9f9;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .carrusel-item img {
-    width: 100%; /* ocupa todo el ancho */
-    height: 350px; /* altura fija */
-    object-fit: cover; /* ajusta la imagen */
-    border-radius: 4px; /* bordes redondeados */
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
 .carrusel-btn {
-    position: absolute; /* posiciona el botón */
-    top: 50%; /* centra verticalmente */
-    transform: translateY(-50%); /* ajusta la posición */
-    background: #ff6600; /* fondo naranja */
-    border: none; /* sin borde */
-    color: white; /* texto blanco */
-    font-size: 2rem; /* tamaño de fuente */
-    padding: 0.25rem 0.75rem; /* espacio interno */
-    cursor: pointer; /* cambia el cursor */
-    border-radius: 4px; /* bordes redondeados */
-    user-select: none; /* evita la selección de texto */
-    z-index: 10; /* prioridad en el apilamiento */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ff6600;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    border-radius: 4px;
+    user-select: none;
+    z-index: 10;
 }
 
 .carrusel-prev {
-    left: 10px; /* posición izquierda */
+    left: 10px;
 }
 
 .carrusel-next {
-    right: 10px; /* posición derecha */
+    right: 10px;
 }
 
 .carrusel-btn:disabled {
-    background: #ccc; /* fondo gris */
-    cursor: not-allowed; /* cursor no permitido */
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Tablet: 2 items visibles */
+@media (min-width: 600px) {
+    .carrusel-item {
+        flex: 0 0 48%; /* casi la mitad - gap */
+    }
+}
+
+/* Desktop: 4 items visibles */
+
+@media (min-width: 1024px) {
+    .carrusel-item {
+        flex: 0 0 calc((100% - 3rem) / 4); /* 4 items con gaps */
+    }
 }
 </style>
 
 <div class="mb-5 mt-5">
-    <h1 class="text-center mt-5 mb-5">Noticias</h1> <!-- encabezado -->
+    <h1 class="text-center mt-5 mb-5">{{ __('news') }}</h1>
     <div class="noticias-carrusel-container">
-        <button class="carrusel-btn carrusel-prev">‹</button> <!-- botón anterior -->
-
+        <button class="carrusel-btn carrusel-prev" aria-label="Previous news">‹</button>
         <div class="carrusel-viewport">
             <div class="carrusel-track">
                 @foreach($noticias as $noticia)
                 <div class="carrusel-item">
                     <a href="{{ route('news2_mostrar', $noticia->id) }}" class="text-decoration-none text-dark d-block">
-                        <img src="{{ asset('fotos/' . $noticia->imagen) }}" alt="{{ $noticia->titular }}" /> <!-- imagen -->
-                        <h5 class="mt-2">{{ $noticia->titular }}</h5> <!-- titular -->
-                        <p class="small">{!! Str::limit($noticia->descripcion, 100) !!}</p> <!-- descripción limitada -->
+                        <img src="{{ asset('fotos/' . $noticia->imagen) }}" alt="{{ $noticia->titular }}" />
+                        <h5 class="mt-2">{{ $noticia->titular }}</h5>
+                        <p class="small">{!! Str::limit($noticia->descripcion, 100) !!}</p>
                     </a>
                 </div>
                 @endforeach
             </div>
         </div>
-
-        <button class="carrusel-btn carrusel-next">›</button> <!-- botón siguiente -->
+        <button class="carrusel-btn carrusel-next" aria-label="Next news">›</button>
     </div>
 
     <div class="d-flex justify-content-center mt-5">
         <a href="{{ route('news2') }}" class="btn btn-warning px-4"
             style="background-color: #ff6600; border:none; color: white; font-weight: 600;">
-            {{ __('More news') }} <!-- botón para más noticias -->
+            {{ __('More news') }}
         </a>
     </div>
 </div>
@@ -106,47 +118,53 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.querySelector(".carrusel-prev");
     const nextBtn = document.querySelector(".carrusel-next");
 
-    const itemsVisible = 4; // número de elementos visibles
-    const totalItems = items.length; // total de elementos
     let currentIndex = 0;
 
-    const style = getComputedStyle(track);
-    const gap = parseInt(style.gap) || 0; // espacio entre elementos
+    // Función para calcular cuántos ítems se ven segun pantalla
+    function getItemsVisible() {
+        const width = window.innerWidth;
+        if (width >= 1024) return 4;
+        if (width >= 600) return 2;
+        return 1;
+    }
 
-    const itemWidth = items[0].offsetWidth + gap; // ancho total de cada elemento
+    function updateCarousel() {
+        const itemsVisible = getItemsVisible();
+        const style = getComputedStyle(track);
+        const gap = parseInt(style.gap) || 0;
+        const itemWidth = items[0].offsetWidth + gap;
+        const maxIndex = Math.ceil(items.length / itemsVisible) - 1;
 
-    const maxIndex = Math.ceil(totalItems / itemsVisible) - 1; // índice máximo
+        if (currentIndex > maxIndex) currentIndex = maxIndex < 0 ? 0 : maxIndex;
 
-    const updateButtons = () => {
-        prevBtn.disabled = currentIndex === 0; // desactiva el botón anterior si está en el inicio
-        nextBtn.disabled = currentIndex === maxIndex; // desactiva el botón siguiente si está en el final
-    };
+        const moveX = currentIndex * itemsVisible * itemWidth;
+        track.style.transform = `translateX(-${moveX}px)`;
 
-    const updateCarousel = () => {
-        const moveX = currentIndex * itemsVisible * itemWidth; // calcula el desplazamiento
-        track.style.transform = `translateX(-${moveX}px)`; // mueve el carrusel
-        updateButtons(); // actualiza los botones
-    };
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+    }
 
     nextBtn.addEventListener("click", () => {
+        const itemsVisible = getItemsVisible();
+        const maxIndex = Math.ceil(items.length / itemsVisible) - 1;
         if (currentIndex < maxIndex) {
             currentIndex++;
-            updateCarousel(); // mueve al siguiente grupo
+            updateCarousel();
         }
     });
 
     prevBtn.addEventListener("click", () => {
         if (currentIndex > 0) {
             currentIndex--;
-            updateCarousel(); // mueve al grupo anterior
+            updateCarousel();
         }
     });
 
     window.addEventListener("resize", () => {
-        currentIndex = 0; // reinicia el índice al cambiar el tamaño de la ventana
+        currentIndex = 0;
         updateCarousel();
     });
 
-    updateCarousel(); // inicializa el carrusel
+    updateCarousel();
 });
 </script>

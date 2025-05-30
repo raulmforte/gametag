@@ -17,13 +17,15 @@ class JuegoController extends Controller {
    public function show($id)
     {
         $juego = Juego::with(['precios'])->findOrFail($id); // busca el juego con sus precios asociados
+
+        $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get(); // obtiene los últimos 12 juegos ordenados por fecha
     
         $reviews = Review::where('id_juego', $id)
                 ->where('aceptada', 1) // filtra las reviews aceptadas
                 ->orderBy('created_at', 'desc') // ordena por fecha de creación descendente
                 ->get();
 
-        return view('juegos.show', compact('juego', 'reviews')); // pasa el juego y las reviews a la vista
+        return view('juegos.show', compact('juego', 'reviews', 'juegos')); // pasa el juego y las reviews a la vista
     }
 
 
@@ -35,9 +37,11 @@ class JuegoController extends Controller {
     public function mostrarPorCategoria($categoria)
     {
         $categoria = str_replace('_', ' ', $categoria); // reemplaza guiones bajos por espacios
-        $juegos = Juego::where('genero', $categoria)->get(); // obtiene los juegos cuyo género coincide con la categoría
+        $juegos2 = Juego::where('genero', $categoria)->get(); // obtiene los juegos cuyo género coincide con la categoría
+        $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get(); // obtiene los últimos 12 juegos ordenados por fecha
 
-        return view('juegos.categoria', compact('juegos', 'categoria')); // pasa los juegos y la categoría a la vista
+
+        return view('juegos.categoria', compact('juegos', 'categoria', 'juegos2')); // pasa los juegos y la categoría a la vista
     }
 
 

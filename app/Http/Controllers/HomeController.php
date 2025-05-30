@@ -23,18 +23,24 @@ class HomeController extends Controller
 
         $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get(); // obtiene los últimos 12 juegos ordenados por fecha
 
+
         return view('welcome', compact('noticias', 'juegos')); // pasa las noticias y juegos a la vista 'welcome'
     }
 
     public function hot_new()
     {
         $noticia = \App\Models\Noticia::orderBy('id', 'desc')->first(); // obtiene la última noticia por ID
-        return view('partials.hot_new', compact('noticia')); // pasa la noticia a la vista 'hot_new'
+
+        $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get(); // obtiene los últimos 12 juegos ordenados por fecha
+
+        return view('partials.hot_new', compact('noticia', 'juegos')); // pasa la noticia a la vista 'hot_new'
     }
 
     public function sobre_nosotros()
     {
-        return view('partials.about_us'); // devuelve la vista 'about_us'
+        $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get(); // obtiene los últimos 12 juegos ordenados por fecha
+
+        return view('partials.about_us', compact('juegos')); // devuelve la vista 'about_us'
     }
 
     public function categorias(Request $request)
@@ -49,13 +55,17 @@ class HomeController extends Controller
 
         $fechaReferencia = Carbon::create(2025, 5, 21, 9, 0, 0); // crea una fecha específica como referencia
 
-        return view('news2', compact('noticias', 'fechaReferencia')); // pasa las noticias y la fecha de referencia a la vista 'news2'
+        $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get(); // obtiene los últimos 12 juegos ordenados por fecha
+
+        return view('news2', compact('noticias', 'fechaReferencia', 'juegos')); // pasa las noticias y la fecha de referencia a la vista 'news2'
     }
 
     public function news2_mostrar($id)
     {
         $noticia = Noticia::findOrFail($id); // busca la noticia por ID y lanza un error si no se encuentra
 
-        return view('news2_mostrar', compact('noticia')); // pasa la noticia a la vista 'news2_mostrar'
+        $juegos = Juego::orderBy('fecha', 'desc')->take(12)->get(); // obtiene los últimos 12 juegos ordenados por fecha
+
+        return view('news2_mostrar', compact('noticia', 'juegos')); // pasa la noticia a la vista 'news2_mostrar'
     }
 }

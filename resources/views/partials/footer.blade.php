@@ -37,10 +37,9 @@
       <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 fw-bold text-orange">{{ __('Last releases') }}</h6>
         <ul class="list-unstyled">
-          <li><i class="fas fa-gamepad me-2 text-orange"></i> Elden Ring: Shadow of the Erdtree</li>
-          <li><i class="fas fa-gamepad me-2 text-orange"></i> GTA VI</li>
-          <li><i class="fas fa-gamepad me-2 text-orange"></i> Starfield</li>
-          <li><i class="fas fa-gamepad me-2 text-orange"></i> Hades II</li>
+          @foreach ($juegos->sortByDesc('fecha')->take(4) as $juego)
+            <li><i class="fas fa-gamepad me-2 text-orange"></i>{{ $juego->nombre }}</li>
+          @endforeach
         </ul>
       </div>
 

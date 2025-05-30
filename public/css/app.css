@@ -24,7 +24,7 @@
   height: 30px;
 }
 .top-bar {
-  background-color: #343a40;
+  background-color: #ced4da;
   color: rgba(255, 255, 255, 0.7);
   padding: 5px 0;
   display: flex;
@@ -61,6 +61,10 @@ body {
 
 .fixed-header img {
   max-width: 100%;
+}
+
+.fixed-header{
+  border-bottom: 1px rgb(223, 213, 223) solid;
 }
 
 .top-bar a {
@@ -282,8 +286,8 @@ body {
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  height: 650px;
-  width: 400px;
+  height: 600px;
+  width: 350px;
   display: flex;
   align-items: flex-end;
   justify-content: center;

@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Auth;
                 </form>
             </li>
             <li>
-                <form method="POST" action="{{ route('welcome') }}">
+                <form action="{{ route('welcome') }}">
                     @csrf
                     <button class="btn btn-success w-100" type="submit">Volver a la página principal</button>
                 </form>

@@ -24,13 +24,13 @@
     <div class="container py-4 mt-5">
         <h1 class="mb-4">{{ __('Games of') }} {{ ucfirst($categoria) }}</h1>
         <div class="row">
-            @forelse ($juegos as $juego)
+            @forelse ($juegos2 as $juego2)
                 <div class="col-12 col-sm-6 col-md-3 mb-4">
-                    <a href="{{ route('juegos.show', $juego->id) }}" class="text-decoration-none">
+                    <a href="{{ route('juegos.show', $juego2->id) }}" class="text-decoration-none">
                         <div class="card">
-                            <img src="{{ asset('fotos/' . $juego->imagen) }}" class="card-img-top" alt="{{ $juego->nombre }}" />
+                            <img src="{{ asset('fotos/' . $juego2->imagen) }}" class="card-img-top" alt="{{ $juego2->nombre }}" />
                             <div class="card-body">
-                                <h5 class="card-title text-center text-dark">{{ $juego->nombre }}</h5>
+                                <h5 class="card-title text-center text-dark">{{ $juego2->nombre }}</h5>
                             </div>
                         </div>
                     </a>
